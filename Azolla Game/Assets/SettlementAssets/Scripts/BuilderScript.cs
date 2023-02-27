@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.SettlementAssets.Scripts;
 
 public class BuilderScript : MonoBehaviour
 {
+    [SerializeField]
+    GameObject gameManager;
+
     #region Button Fields
     [SerializeField]
     private Button secOne;
@@ -34,14 +38,24 @@ public class BuilderScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timeCost;
 
-    [SerializeField]
-    private Image image;
-
     #endregion
+
+    #region Building Objects
+    Building watchtower = new Building(1);
+    Building park = new Building(2);
+    Building airPurifier = new Building(3);
+    #endregion
+
+    private Building[] buildPlots;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager.GetComponent<GameObject>();
+
+        // initialise buildplots array
+        buildPlots = new Building[6];
+
         // Set Up Building Button Click Events
         Button sOne = secOne.GetComponent<Button>();
         sOne.onClick.AddListener(sOnePress);
@@ -107,5 +121,6 @@ public class BuilderScript : MonoBehaviour
     void closeMePress()
     {
         this.gameObject.SetActive(false);
+        gameManager.GetComponent<GameManagerScript>().isMenuOpen = false;
     }
 }
