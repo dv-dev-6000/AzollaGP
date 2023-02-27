@@ -79,43 +79,43 @@ public class BuilderScript : MonoBehaviour
     void sOnePress()
     {
         // Set Building Name
-        buildType.GetComponent<TextMeshProUGUI>().text = "Watch Tower";
+        buildType.GetComponent<TextMeshProUGUI>().text = watchtower.Name;
         // Set Benefits
-        benOne.GetComponent<TextMeshProUGUI>().text = "Provides a boost to the settlements Security score.";
-        benTwo.GetComponent<TextMeshProUGUI>().text = "Security score can't be reduced below 25%";
+        benOne.GetComponent<TextMeshProUGUI>().text = watchtower.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = watchtower.BenTwo;
         // Set Descriptor
-        buildInfo.GetComponent<TextMeshProUGUI>().text = "The watchtower allows settlers to gain a high vantage point and keep a close watch on the lands around the settlement.";
+        buildInfo.GetComponent<TextMeshProUGUI>().text = watchtower.Info;
         // Set Costs
-        matCost.GetComponent<TextMeshProUGUI>().text = "250";
-        timeCost.GetComponent<TextMeshProUGUI>().text = "2";
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.TimeCost;
     }
 
     void mOnePress()
     {
         // Set Building Name
-        buildType.GetComponent<TextMeshProUGUI>().text = "Park";
+        buildType.GetComponent<TextMeshProUGUI>().text = park.Name;
         // Set Benefits
-        benOne.GetComponent<TextMeshProUGUI>().text = "Provides a boost to the settlements Morale score.";
-        benTwo.GetComponent<TextMeshProUGUI>().text = "Morale score can't be reduced below 25%";
+        benOne.GetComponent<TextMeshProUGUI>().text = park.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = park.BenTwo;
         // Set Descriptor
-        buildInfo.GetComponent<TextMeshProUGUI>().text = "The park provides a recreational area for settlers to unwind and relax, happy settlers are productive settlers.";
+        buildInfo.GetComponent<TextMeshProUGUI>().text = park.Info;
         // Set Costs
-        matCost.GetComponent<TextMeshProUGUI>().text = "150";
-        timeCost.GetComponent<TextMeshProUGUI>().text = "2";
+        matCost.GetComponent<TextMeshProUGUI>().text = ""+park.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = ""+park.TimeCost;
     }
 
     void eOnePress()
     {
         // Set Building Name
-        buildType.GetComponent<TextMeshProUGUI>().text = "Air Purifier";
+        buildType.GetComponent<TextMeshProUGUI>().text = airPurifier.Name;
         // Set Benefits
-        benOne.GetComponent<TextMeshProUGUI>().text = "Provides a boost to the settlements Environment score.";
-        benTwo.GetComponent<TextMeshProUGUI>().text = "Environment score can't be reduced below 25%";
+        benOne.GetComponent<TextMeshProUGUI>().text = airPurifier.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = airPurifier.BenTwo;
         // Set Descriptor
-        buildInfo.GetComponent<TextMeshProUGUI>().text = "Air purifiers help clear the atmosphere of toxic fumes, they are an essential first step in the mission to resettle earth. ";
+        buildInfo.GetComponent<TextMeshProUGUI>().text = airPurifier.Info;
         // Set Costs
-        matCost.GetComponent<TextMeshProUGUI>().text = "200";
-        timeCost.GetComponent<TextMeshProUGUI>().text = "2";
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.TimeCost;
     }
 
     void closeMePress()
