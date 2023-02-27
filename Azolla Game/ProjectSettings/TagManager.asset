@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Planets
+  - Stars
+  - Sky
+  - CustomPC
+  - CosmoPC
+  - AchievePC
+  - MutlipPC
+  - EncycloPC
+  - PCs
+  - FrontWall
+  - CollideCam
   layers:
   - Default
   - TransparentFX
