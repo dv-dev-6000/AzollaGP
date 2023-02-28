@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: bf6845b473762064cb3eccad50ace011, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -2413806693520163455, guid: 6d8aa1e2c4227f5449b31d8dcb291f9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: bf6845b473762064cb3eccad50ace011, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -2413806693520163455, guid: 6d8aa1e2c4227f5449b31d8dcb291f9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90f098de6c648b4a986ad454646f3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  id: 0
   hovCir: {fileID: 2352400798906272288}
 --- !u!1 &3348666634262687359
 GameObject:
@@ -338,8 +340,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: bf6845b473762064cb3eccad50ace011, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -2413806693520163455, guid: 6d8aa1e2c4227f5449b31d8dcb291f9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -428,13 +430,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4ec30345b41d2354db8d759b2a8af80a, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e9336d31f1d6c394da4a3a1cbc32764b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.25, y: 2.25}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -468,4 +470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90f098de6c648b4a986ad454646f3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  id: 0
   hovCir: {fileID: 2352400798906272288}
