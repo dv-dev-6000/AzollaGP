@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using Assets.Scripts;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -34,10 +34,12 @@ public class CosmoMapScript : MonoBehaviour
     void cButtPress()
     {
         this.gameObject.SetActive(false);
+        TheCloud.uiMenuOpen = false;
     }
 
     void gButtPress()
     {
+        TheCloud.uiMenuOpen = false;
         SceneManager.LoadScene(1);
     }
 

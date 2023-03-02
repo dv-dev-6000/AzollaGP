@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class HoverOverScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject componentOne;
     [SerializeField]
-    private GameObject shipManager;
-    [SerializeField]
     private int id;
-
-    //TEST
     [SerializeField]
-    private RectTransform cosmoMapMenu;
+    private RectTransform linkedMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -29,27 +26,24 @@ public class HoverOverScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!shipManager.GetComponent<ShipManagerScript>().MenuOpen)
+        if ( TheCloud.uiMenuOpen == false )
         {
             componentOne.SetActive(true);
-            shipManager.GetComponent<ShipManagerScript>().HoverID = id;
         }
-
-        //TESTING _________________________________________________________
-        cosmoMapMenu.gameObject.SetActive(true);
-
-        //int tmp = shipManager.GetComponent<ShipManagerScript>().HoverID;
-        //
-        //if (tmp != -1)
-        //{
-        //    shipManager.GetComponent<ShipManagerScript>().openUI(tmp);
-        //}
     }
 
     private void OnMouseExit()
     {
         componentOne.SetActive(false);
-        shipManager.GetComponent<ShipManagerScript>().HoverID = -1;
+    }
+
+    private void OnMouseDown()
+    {
+        if ((TheCloud.uiMenuOpen == false) && ((id > -1) && (id < 5)))
+        {
+            linkedMenu.gameObject.SetActive(true);
+            TheCloud.uiMenuOpen = true;
+        }
     }
 
 }
