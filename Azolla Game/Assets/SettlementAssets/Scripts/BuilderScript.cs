@@ -121,6 +121,6 @@ public class BuilderScript : MonoBehaviour
     void closeMePress()
     {
         this.gameObject.SetActive(false);
-        gameManager.GetComponent<GameManagerScript>().isMenuOpen = false;
+        gameManager.GetComponent<GameManagerScript>().isMenuOpen = false; // update to use global var
     }
 }
