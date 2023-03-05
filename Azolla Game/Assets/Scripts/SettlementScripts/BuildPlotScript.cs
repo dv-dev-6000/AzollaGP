@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.Scripts;
 public class BuildPlotScript : MonoBehaviour
 {
     [SerializeField]
@@ -28,7 +28,7 @@ public class BuildPlotScript : MonoBehaviour
     private void OnMouseEnter()
     {
         //check if menu closed
-        if (gameManager.GetComponent<GameManagerScript>().isMenuOpen == false)
+        if (TheCloud.uiMenuOpen == false)
         {
             hovCir.SetActive(true);
         }
@@ -37,7 +37,7 @@ public class BuildPlotScript : MonoBehaviour
     private void OnMouseExit()
     {
         //check if menu closed
-        if (gameManager.GetComponent<GameManagerScript>().isMenuOpen == false)
+        if (TheCloud.uiMenuOpen == false)
         {
             hovCir.SetActive(false);
         }

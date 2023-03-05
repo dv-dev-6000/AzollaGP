@@ -9,8 +9,9 @@ namespace Assets.Scripts
     public static class TheCloud
     {
         // Static Variables
-        public static bool uiMenuOpen { get; set; }
-
+        public static bool uiMenuOpen { get; set; }             // is a UI menu currently open
+        public static int credits { get; set; }                 // total credits
+        
         
     }
 }

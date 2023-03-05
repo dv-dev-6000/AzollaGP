@@ -29,6 +29,7 @@ public class HoverOverScript : MonoBehaviour
         if ( TheCloud.uiMenuOpen == false )
         {
             componentOne.SetActive(true);
+            TheCloud.credits++;
         }
     }
 

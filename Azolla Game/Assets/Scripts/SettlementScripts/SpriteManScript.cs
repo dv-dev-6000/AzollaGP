@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SpriteManScript : MonoBehaviour
 {
     [SerializeField]
+    private Sprite emptyPlot;
+    [SerializeField]
     private Sprite wTowerOne;
     [SerializeField]
     private Sprite parkOne;

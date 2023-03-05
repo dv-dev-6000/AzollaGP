@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Assets.SettlementAssets.Scripts;
+using Assets.Scripts.SettlementScripts;
+using Assets.Scripts;
 
 public class BuilderScript : MonoBehaviour
 {
@@ -46,15 +47,11 @@ public class BuilderScript : MonoBehaviour
     Building airPurifier = new Building(3);
     #endregion
 
-    private Building[] buildPlots;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager.GetComponent<GameObject>();
-
-        // initialise buildplots array
-        buildPlots = new Building[6];
 
         // Set Up Building Button Click Events
         Button sOne = secOne.GetComponent<Button>();
@@ -121,6 +118,6 @@ public class BuilderScript : MonoBehaviour
     void closeMePress()
     {
         this.gameObject.SetActive(false);
-        gameManager.GetComponent<GameManagerScript>().isMenuOpen = false; // update to use global var
+        TheCloud.uiMenuOpen = false; // update to use global var
     }
 }

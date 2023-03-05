@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts;
 
 public class GameManagerScript : MonoBehaviour
 {
-    public bool isMenuOpen { get; set; }
     public int currPlotSelection { get; set; }
 
     #region Resource Values
@@ -67,9 +67,6 @@ public class GameManagerScript : MonoBehaviour
         environmentMin = 0;
         EnvironmentScore = environmentMin;
 
-
-        // set menuopen bool
-        isMenuOpen = false;
 
         // Set initial material amount
         materialsCount = 0;
@@ -136,13 +133,13 @@ public class GameManagerScript : MonoBehaviour
         if (buildPanel.gameObject.activeInHierarchy == false)
         {
             buildPanel.gameObject.SetActive(true);
-            isMenuOpen = true;
+            TheCloud.uiMenuOpen = true;
             debugText.text = "" + currPlotSelection;
         }
         else
         {
             buildPanel.gameObject.SetActive(false);
-            isMenuOpen = false;
+            TheCloud.uiMenuOpen = false;
         }
     }
 
