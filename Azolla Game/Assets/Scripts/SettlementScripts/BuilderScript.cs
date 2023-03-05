@@ -8,6 +8,8 @@ using Assets.Scripts;
 
 public class BuilderScript : MonoBehaviour
 {
+    private string selectedType;
+
     [SerializeField]
     GameObject gameManager;
 
@@ -20,6 +22,9 @@ public class BuilderScript : MonoBehaviour
     private Button envOne;
     [SerializeField]
     private Button close;
+    [SerializeField]
+    private Button buildIt;
+
 
     #endregion
 
@@ -42,10 +47,23 @@ public class BuilderScript : MonoBehaviour
     #endregion
 
     #region Building Objects
-    Building watchtower = new Building(1);
-    Building park = new Building(2);
-    Building airPurifier = new Building(3);
+    BuildingInfo watchtower = new BuildingInfo(1);
+    BuildingInfo park = new BuildingInfo(2);
+    BuildingInfo airPurifier = new BuildingInfo(3);
     #endregion
+
+    [SerializeField]
+    private GameObject plot0;
+    [SerializeField]
+    private GameObject plot1;
+    [SerializeField]
+    private GameObject plot2;
+    [SerializeField]
+    private GameObject plot3;
+    [SerializeField]
+    private GameObject plot4;
+    [SerializeField]
+    private GameObject plot5;
 
 
     // Start is called before the first frame update
@@ -65,6 +83,13 @@ public class BuilderScript : MonoBehaviour
 
         Button closeMe = close.GetComponent<Button>();
         closeMe.onClick.AddListener(closeMePress);
+
+        Button buildMe = buildIt.GetComponent<Button>();
+        buildMe.onClick.AddListener(buildMePress);
+
+        selectedType = "";
+
+        gameManager.GetComponent<GameManagerScript>().debugText.text += "MenuScript_";
     }
 
     // Update is called once per frame
@@ -85,6 +110,8 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.TimeCost;
+
+        selectedType = "sec_1_1";
     }
 
     void mOnePress()
@@ -99,6 +126,8 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = ""+park.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = ""+park.TimeCost;
+
+        selectedType = "mor_1_1";
     }
 
     void eOnePress()
@@ -113,11 +142,49 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.TimeCost;
+
+        selectedType = "env_1_1";
     }
 
     void closeMePress()
     {
         this.gameObject.SetActive(false);
         TheCloud.uiMenuOpen = false; // update to use global var
+    }
+
+    void buildMePress()
+    {
+        GameManagerScript gms = gameManager.GetComponent<GameManagerScript>();
+        // get ID
+        int id = gms.currPlotSelection;
+
+        // set plot to building type
+        TheCloud.Plots[id].Type = selectedType.Substring(0, 3);
+        TheCloud.Plots[id].Option = int.Parse(selectedType[4].ToString());
+        TheCloud.Plots[id].Level = int.Parse(selectedType[6].ToString());
+
+        switch (id) 
+        {
+            case 0:
+                plot0.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+            case 1:
+                plot1.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+            case 2:
+                plot2.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+            case 3:
+                plot3.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+            case 4:
+                plot4.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+            case 5:
+                plot5.GetComponent<BuildPlotScript>().UpdatePlot();
+                break;
+        }
+
+        closeMePress();
     }
 }

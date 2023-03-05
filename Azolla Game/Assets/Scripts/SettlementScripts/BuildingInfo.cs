@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.SettlementScripts
 {
-    class Building
+    class BuildingInfo
     {
         // class vars
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace Assets.Scripts.SettlementScripts
         /// Constructor for building class
         /// </summary>
         /// <param name="type">1=Watchtower, 2=Park, 3=AirPurifier</param>
-        public Building(int type)
+        public BuildingInfo(int type)
         {
             switch (type)
             {

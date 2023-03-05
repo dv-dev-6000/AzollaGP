@@ -4,8 +4,14 @@ using UnityEngine;
 using Assets.Scripts;
 public class BuildPlotScript : MonoBehaviour
 {
+    private string type;
+    private int option;
+    private int level;
+
     [SerializeField]
     GameObject gameManager;
+    [SerializeField]
+    GameObject spriteManager;
 
     [SerializeField]
     private int id;
@@ -15,8 +21,10 @@ public class BuildPlotScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hovCir.GetComponent<GameObject>();
-        gameManager.GetComponent<GameObject>();
+        gameManager.GetComponent<GameManagerScript>().debugText.text += "PlotScript_";
+        //update plots
+        UpdatePlot();
+        gameManager.GetComponent<GameManagerScript>().debugText.text += type + option + level;
     }
 
     // Update is called once per frame
@@ -49,10 +57,44 @@ public class BuildPlotScript : MonoBehaviour
         if (hovCir.activeInHierarchy == true)
         {
             gameManager.GetComponent<GameManagerScript>().currPlotSelection = id;
-            gameManager.GetComponent<GameManagerScript>().OpenBuildMenu();
+
+            if (level == 0)
+            {
+                gameManager.GetComponent<GameManagerScript>().OpenBuildMenu();
+            }
+            // else oven upgrade menu
+
             hovCir.SetActive(false);
         }
     }
 
-    // if clicked and occupied, get state and open upgrade menu
+    public void UpdatePlot()
+    {
+        type = TheCloud.Plots[id].Type;
+        option = TheCloud.Plots[id].Option;
+        level = TheCloud.Plots[id].Level;
+
+        //set sprite
+        string tmp = type + "_" + option + "_" + level;
+
+        switch (tmp)
+        {
+            case "sec_1_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_1_1;
+                break;
+            case "mor_1_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_1_1;
+                break;
+            case "env_1_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_1_1;
+                break;
+            case "empty_0_0":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Emp_0_0;
+                break;
+            default:
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Emp_0_0;
+                break;
+        }
+        //gameManager.GetComponent<GameManagerScript>().debugText.text = tmp;
+    }
 }

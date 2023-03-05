@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Assets.Scripts;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
     public int currPlotSelection { get; set; }
+    
+    // back to ship Button
+    [SerializeField]
+    private Button backButton;
 
     #region Resource Values
     // security variables
@@ -34,13 +39,14 @@ public class GameManagerScript : MonoBehaviour
 
     #endregion
 
+
     // players materials cache
     private int materialsCount;
     // materials prize amount
     private int matPrize = 75;
 
     [SerializeField]
-    private TextMeshProUGUI debugText;
+    public TextMeshProUGUI debugText;
 
     // Build/Upgrade Panel Menu
     [SerializeField]
@@ -60,20 +66,24 @@ public class GameManagerScript : MonoBehaviour
         Cursor.visible = true;
 
         // set initial min values for main scores
-        securityMin = 0;
-        SecurityScore = securityMin;
-        moraleMin = 0;
-        MoraleScore = moraleMin;
-        environmentMin = 0;
-        EnvironmentScore = environmentMin;
+        securityMin = TheCloud.minSecurity;
+        SecurityScore = TheCloud.securityScore;
+        moraleMin = TheCloud.minMorale;
+        MoraleScore = TheCloud.moraleScore;
+        environmentMin = TheCloud.minEnvironment;
+        EnvironmentScore = TheCloud.environmentScore;
 
 
         // Set initial material amount
-        materialsCount = 0;
+        materialsCount = TheCloud.settOneMaterials;
 
         // Set Up material Button Click Event
         Button matButt = matButton.GetComponent<Button>();
         matButt.onClick.AddListener(AddMaterials);
+
+        // back button
+        Button bckButt = backButton.GetComponent<Button>();
+        bckButt.onClick.AddListener(BackToShip);
 
         debugText.GetComponent<TextMeshProUGUI>();
 
@@ -81,6 +91,10 @@ public class GameManagerScript : MonoBehaviour
         secSlider.GetComponent<Slider>();
         morSlider.GetComponent<Slider>();
         envSlider.GetComponent<Slider>();
+
+        UpdateScoreValues();
+
+        debugText.text += "manscript_";
     }
 
     // Update is called once per frame
@@ -123,6 +137,9 @@ public class GameManagerScript : MonoBehaviour
             EnvironmentScore = environmentMax;
         }
         envSlider.value = EnvironmentScore;
+
+        // update matrerials
+        matDisplayText.GetComponent<TextMeshProUGUI>().text = "" + materialsCount;
     }
     
     /// <summary>
@@ -134,7 +151,7 @@ public class GameManagerScript : MonoBehaviour
         {
             buildPanel.gameObject.SetActive(true);
             TheCloud.uiMenuOpen = true;
-            debugText.text = "" + currPlotSelection;
+            //debugText.text = "" + currPlotSelection;
         }
         else
         {
@@ -146,10 +163,25 @@ public class GameManagerScript : MonoBehaviour
     void AddMaterials()
     {
         materialsCount = materialsCount + matPrize;
-        matDisplayText.GetComponent<TextMeshProUGUI>().text = ""+materialsCount;
         SecurityScore += 25;
         EnvironmentScore += 10;
         MoraleScore += 15;
         UpdateScoreValues();
+    }
+
+    void BackToShip()
+    {
+        // store level info in cloud
+        TheCloud.minSecurity = securityMin;
+        TheCloud.securityScore = SecurityScore;
+        TheCloud.minMorale = moraleMin;
+        TheCloud.moraleScore = MoraleScore;
+        TheCloud.minEnvironment = environmentMin;
+        TheCloud.environmentScore = EnvironmentScore;
+
+        TheCloud.settOneMaterials = materialsCount;
+
+        // load ship scene
+        SceneManager.LoadScene(0);
     }
 }
