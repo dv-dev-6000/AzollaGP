@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4522002892968314550
 Transform:
   m_ObjectHideFlags: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  spriteManager: {fileID: 0}
   id: 0
   hovCir: {fileID: 2352400798906272288}
 --- !u!1 &3348666634262687359
@@ -471,5 +472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  spriteManager: {fileID: 0}
   id: 0
   hovCir: {fileID: 2352400798906272288}

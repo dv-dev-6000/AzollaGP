@@ -1845,6 +1845,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277816627}
   m_CullTransparentMesh: 1
+--- !u!1 &280887767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 672946789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &284353818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
@@ -2537,6 +2542,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 1864571308}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3630,6 +3639,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 280887767}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4270,6 +4283,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 1375809664}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5079,6 +5096,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 1866353976}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5317,7 +5338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Build!
+  m_text: Upgrade!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -5394,6 +5415,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055562595}
   m_CullTransparentMesh: 1
+--- !u!1 &1056250099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 1703208531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057977981
 GameObject:
   m_ObjectHideFlags: 0
@@ -7264,6 +7290,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324505862}
   m_CullTransparentMesh: 1
+--- !u!1 &1329971363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 1343613499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1343613499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7283,6 +7314,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 1329971363}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7598,6 +7633,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369263302}
   m_CullTransparentMesh: 1
+--- !u!1 &1375809664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 797001716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1382191233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8060882971855349207, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
@@ -8345,6 +8385,7 @@ GameObject:
   - component: {fileID: 1626509872}
   - component: {fileID: 1626509874}
   - component: {fileID: 1626509873}
+  - component: {fileID: 1626509875}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -8417,6 +8458,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626509871}
   m_CullTransparentMesh: 1
+--- !u!114 &1626509875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626509871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b3f55e0c5ce564b88db32f5482b2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 2012923455}
+  close: {fileID: 1186876289}
+  upgradeIt: {fileID: 1106543040}
+  buildType: {fileID: 2001976275}
+  benOne: {fileID: 1445834182}
+  benTwo: {fileID: 978163237}
+  buildInfo: {fileID: 358808941}
+  matCost: {fileID: 335817874}
+  timeCost: {fileID: 139644517}
+  plot0: {fileID: 1382191233}
+  plot1: {fileID: 215114070}
+  plot2: {fileID: 1143919565}
+  plot3: {fileID: 65699720}
+  plot4: {fileID: 951498539}
+  plot5: {fileID: 812519741}
 --- !u!1 &1635058540
 GameObject:
   m_ObjectHideFlags: 0
@@ -8934,6 +9002,10 @@ PrefabInstance:
       propertyPath: spriteManager
       value: 
       objectReference: {fileID: 837157156}
+    - target: {fileID: 1781098605657202059, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+      propertyPath: upgradeSprite
+      value: 
+      objectReference: {fileID: 1056250099}
     - target: {fileID: 8060882971855349192, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9649,6 +9721,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808751669}
   m_CullTransparentMesh: 1
+--- !u!1 &1864571308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 448758541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866353976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107114845852487610, guid: 167cef00dab43a44bab0cc0a579f0dc0, type: 3}
+  m_PrefabInstance: {fileID: 1011706450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866765081
 GameObject:
   m_ObjectHideFlags: 0

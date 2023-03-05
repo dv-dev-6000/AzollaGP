@@ -164,6 +164,7 @@ public class GameManagerScript : MonoBehaviour
         if (upgradePanel.gameObject.activeInHierarchy == false)
         {
             upgradePanel.gameObject.SetActive(true);
+            upgradePanel.GetComponent<UpgradeScript>().GetPlotInfo();
             TheCloud.uiMenuOpen = true;
         }
         else

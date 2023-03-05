@@ -69,7 +69,7 @@ public class BuilderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameObject>();
+        //gameManager.GetComponent<GameObject>();
 
         // Set Up Building Button Click Events
         Button sOne = secOne.GetComponent<Button>();

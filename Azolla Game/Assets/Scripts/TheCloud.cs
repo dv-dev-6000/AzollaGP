@@ -37,5 +37,6 @@ namespace Assets.Scripts
         public static int settOneMaterials { get; set; }
 
         public static Plot[] Plots { get; set; } = {new Plot(), new Plot(), new Plot(), new Plot(), new Plot(), new Plot() };
+
     }
 }

@@ -17,6 +17,8 @@ public class BuildPlotScript : MonoBehaviour
     private int id;
     [SerializeField]
     private GameObject hovCir;
+    [SerializeField]
+    public GameObject upgradeSprite;
 
     // Start is called before the first frame update
     void Start()

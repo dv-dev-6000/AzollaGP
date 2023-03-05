@@ -16,6 +16,11 @@ namespace Assets.Scripts.SettlementScripts
         public int MatCost { get; set; }
         public int TimeCost { get; set; }
 
+        public string BenOneUP { get; set; }
+        public string BenTwoUP { get; set; }
+        public int MatCostUP { get; set; }
+        public int TimeCostUP { get; set; }
+
         public bool IsAvailable { get; set; }
         public int Level { get; set; }
 
@@ -49,6 +54,11 @@ namespace Assets.Scripts.SettlementScripts
             TimeCost = 2;
             IsAvailable = true;
             Level = 0;
+
+            BenOneUP = "Provides a further boost to Security score.";
+            BenTwoUP = "Security score can't be reduced below 50%";
+            MatCostUP = 450;
+            TimeCostUP = 3;
         }
 
         private void makePark()
@@ -61,6 +71,11 @@ namespace Assets.Scripts.SettlementScripts
             TimeCost = 2;
             IsAvailable = true;
             Level = 0;
+
+            BenOneUP = "Provides a further boost to Morale score.";
+            BenTwoUP = "Morale score can't be reduced below 50%";
+            MatCostUP = 350;
+            TimeCostUP = 2;
         }
 
         private void makeAirPurifier()
@@ -73,6 +88,11 @@ namespace Assets.Scripts.SettlementScripts
             TimeCost = 2;
             IsAvailable = true;
             Level = 0;
+
+            BenOneUP = "Provides a further boost to Environment score.";
+            BenTwoUP = "Environment score can't be reduced below 50%";
+            MatCostUP = 400;
+            TimeCostUP = 3;
         }
     }
 }
