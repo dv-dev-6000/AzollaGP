@@ -21,10 +21,8 @@ public class BuildPlotScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameManagerScript>().debugText.text += "PlotScript_";
         //update plots
         UpdatePlot();
-        gameManager.GetComponent<GameManagerScript>().debugText.text += type + option + level;
     }
 
     // Update is called once per frame
@@ -62,7 +60,10 @@ public class BuildPlotScript : MonoBehaviour
             {
                 gameManager.GetComponent<GameManagerScript>().OpenBuildMenu();
             }
-            // else oven upgrade menu
+            else
+            {
+                gameManager.GetComponent<GameManagerScript>().OpenUpgradeMenu();
+            }
 
             hovCir.SetActive(false);
         }
@@ -95,6 +96,6 @@ public class BuildPlotScript : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Emp_0_0;
                 break;
         }
-        //gameManager.GetComponent<GameManagerScript>().debugText.text = tmp;
+        gameManager.GetComponent<GameManagerScript>().debugText.text = tmp;
     }
 }

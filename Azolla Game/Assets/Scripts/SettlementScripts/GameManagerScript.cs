@@ -51,6 +51,8 @@ public class GameManagerScript : MonoBehaviour
     // Build/Upgrade Panel Menu
     [SerializeField]
     private RectTransform buildPanel;
+    [SerializeField]
+    private RectTransform upgradePanel;
     // Materials Button
     [SerializeField]
     private Button matButton;
@@ -93,8 +95,6 @@ public class GameManagerScript : MonoBehaviour
         envSlider.GetComponent<Slider>();
 
         UpdateScoreValues();
-
-        debugText.text += "manscript_";
     }
 
     // Update is called once per frame
@@ -156,6 +156,19 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             buildPanel.gameObject.SetActive(false);
+            TheCloud.uiMenuOpen = false;
+        }
+    }
+    public void OpenUpgradeMenu()
+    {
+        if (upgradePanel.gameObject.activeInHierarchy == false)
+        {
+            upgradePanel.gameObject.SetActive(true);
+            TheCloud.uiMenuOpen = true;
+        }
+        else
+        {
+            upgradePanel.gameObject.SetActive(false);
             TheCloud.uiMenuOpen = false;
         }
     }

@@ -88,8 +88,6 @@ public class BuilderScript : MonoBehaviour
         buildMe.onClick.AddListener(buildMePress);
 
         selectedType = "";
-
-        gameManager.GetComponent<GameManagerScript>().debugText.text += "MenuScript_";
     }
 
     // Update is called once per frame
