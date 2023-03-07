@@ -12,10 +12,12 @@ public class BuilderScript : MonoBehaviour
 
     [SerializeField]
     GameObject gameManager;
+    [SerializeField]
+    GameObject spriteManager;
 
     #region Button Fields
     [SerializeField]
-    private Button secOne;
+    private Button sciOne;
     [SerializeField]
     private Button morOne;
     [SerializeField]
@@ -43,6 +45,8 @@ public class BuilderScript : MonoBehaviour
     private TextMeshProUGUI matCost;
     [SerializeField]
     private TextMeshProUGUI timeCost;
+    [SerializeField]
+    private Image image;
 
     #endregion
 
@@ -69,10 +73,8 @@ public class BuilderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager.GetComponent<GameObject>();
-
         // Set Up Building Button Click Events
-        Button sOne = secOne.GetComponent<Button>();
+        Button sOne = sciOne.GetComponent<Button>();
         sOne.onClick.AddListener(sOnePress);
 
         Button mOne = morOne.GetComponent<Button>();
@@ -88,6 +90,8 @@ public class BuilderScript : MonoBehaviour
         buildMe.onClick.AddListener(buildMePress);
 
         selectedType = "";
+
+        sOnePress();
     }
 
     // Update is called once per frame
@@ -108,6 +112,8 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = "" + watchtower.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_1_1;
 
         selectedType = "sec_1_1";
     }
@@ -124,6 +130,8 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = ""+park.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = ""+park.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_1_1;
 
         selectedType = "mor_1_1";
     }
@@ -140,6 +148,8 @@ public class BuilderScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.MatCost;
         timeCost.GetComponent<TextMeshProUGUI>().text = "" + airPurifier.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_1_1;
 
         selectedType = "env_1_1";
     }

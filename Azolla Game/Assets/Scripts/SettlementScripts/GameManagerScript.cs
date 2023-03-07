@@ -15,10 +15,10 @@ public class GameManagerScript : MonoBehaviour
     private Button backButton;
 
     #region Resource Values
-    // security variables
-    private const int securityMax = 100;
-    private int securityMin;
-    public int SecurityScore { get; set; }
+    // science variables
+    private const int scienceMax = 100;
+    private int scienceMin;
+    public int ScienceScore { get; set; }
     // morale variables
     private const int moraleMax = 100;
     private int moraleMin;
@@ -30,7 +30,7 @@ public class GameManagerScript : MonoBehaviour
 
     // resource bars
     [SerializeField]
-    private Slider secSlider;
+    private Slider sciSlider;
     [SerializeField]
     private Slider morSlider;
     [SerializeField]
@@ -68,8 +68,8 @@ public class GameManagerScript : MonoBehaviour
         Cursor.visible = true;
 
         // set initial min values for main scores
-        securityMin = TheCloud.minSecurity;
-        SecurityScore = TheCloud.securityScore;
+        scienceMin = TheCloud.minScience;
+        ScienceScore = TheCloud.scienceScore;
         moraleMin = TheCloud.minMorale;
         MoraleScore = TheCloud.moraleScore;
         environmentMin = TheCloud.minEnvironment;
@@ -87,10 +87,10 @@ public class GameManagerScript : MonoBehaviour
         Button bckButt = backButton.GetComponent<Button>();
         bckButt.onClick.AddListener(BackToShip);
 
-        debugText.GetComponent<TextMeshProUGUI>();
+        //debugText.GetComponent<TextMeshProUGUI>();
 
         // set up sliders 
-        secSlider.GetComponent<Slider>();
+        sciSlider.GetComponent<Slider>();
         morSlider.GetComponent<Slider>();
         envSlider.GetComponent<Slider>();
 
@@ -106,15 +106,15 @@ public class GameManagerScript : MonoBehaviour
     void UpdateScoreValues()
     {
         // update security bar
-        if (SecurityScore < securityMin)
+        if (ScienceScore < scienceMin)
         {
-            SecurityScore = securityMin;
+            ScienceScore = scienceMin;
         }
-        else if (SecurityScore > securityMax)
+        else if (ScienceScore > scienceMax)
         {
-            SecurityScore = securityMax;
+            ScienceScore = scienceMax;
         }
-        secSlider.value = SecurityScore;
+        sciSlider.value = ScienceScore;
 
         // update morale bar
         if (MoraleScore < moraleMin)
@@ -177,7 +177,7 @@ public class GameManagerScript : MonoBehaviour
     void AddMaterials()
     {
         materialsCount = materialsCount + matPrize;
-        SecurityScore += 25;
+        ScienceScore += 25;
         EnvironmentScore += 10;
         MoraleScore += 15;
         UpdateScoreValues();
@@ -186,8 +186,8 @@ public class GameManagerScript : MonoBehaviour
     void BackToShip()
     {
         // store level info in cloud
-        TheCloud.minSecurity = securityMin;
-        TheCloud.securityScore = SecurityScore;
+        TheCloud.minScience = scienceMin;
+        TheCloud.scienceScore = ScienceScore;
         TheCloud.minMorale = moraleMin;
         TheCloud.moraleScore = MoraleScore;
         TheCloud.minEnvironment = environmentMin;

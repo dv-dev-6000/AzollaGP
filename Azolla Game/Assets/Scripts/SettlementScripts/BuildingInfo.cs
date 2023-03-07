@@ -33,40 +33,40 @@ namespace Assets.Scripts.SettlementScripts
             switch (type)
             {
                 case 1:
-                    makeWatchtower();
+                    makeScienceLab();
                     break;
                 case 2:
-                    makePark();
+                    makeTreePlantingZone();
                     break;
                 case 3:
-                    makeAirPurifier();
+                    makeSolarArray();
                     break;
             }
         }
 
-        private void makeWatchtower()
+        private void makeScienceLab()
         {
-            Name = "Watch Tower";
-            BenOne = "Provides a boost to the settlements Security score.";
-            BenTwo = "Security score can't be reduced below 25%";
-            Info = "The watchtower allows settlers to gain a high vantage point and keep a close watch on the lands around the settlement.";
+            Name = "Science Lab";
+            BenOne = "Provides a boost to the settlements Science score.";
+            BenTwo = "Science score can't be reduced below 25%";
+            Info = "The Science Lab allows settlers to research new technologies for the advancement of the settlement.";
             MatCost = 250;
             TimeCost = 2;
             IsAvailable = true;
             Level = 0;
 
-            BenOneUP = "Provides a further boost to Security score.";
-            BenTwoUP = "Security score can't be reduced below 50%";
+            BenOneUP = "Provides a further boost to Science score.";
+            BenTwoUP = "Science score can't be reduced below 50%";
             MatCostUP = 450;
             TimeCostUP = 3;
         }
 
-        private void makePark()
+        private void makeTreePlantingZone()
         {
-            Name = "Park";
+            Name = "Tree Planting Zone";
             BenOne = "Provides a boost to the settlements Morale score.";
             BenTwo = "Morale score can't be reduced below 25%";
-            Info = "The park provides a recreational area for settlers to unwind and relax, happy settlers are productive settlers.";
+            Info = "The Tree Planting Zone provides a recreational area for settlers to unwind and relax, happy settlers are productive settlers.";
             MatCost = 150;
             TimeCost = 2;
             IsAvailable = true;
@@ -78,12 +78,12 @@ namespace Assets.Scripts.SettlementScripts
             TimeCostUP = 2;
         }
 
-        private void makeAirPurifier()
+        private void makeSolarArray()
         {
-            Name = "Air Purifier";
+            Name = "Solar Array";
             BenOne = "Provides a boost to the settlements environment score.";
             BenTwo = "Environment score can't be reduced below 25%";
-            Info = "Air purifiers help clear the atmosphere of toxic fumes, they are an essential first step in the mission to resettle earth. ";
+            Info = "Solar Arrays help settlements generate clean energy, they are an essential first step in the mission to resettle earth. ";
             MatCost = 200;
             TimeCost = 2;
             IsAvailable = true;

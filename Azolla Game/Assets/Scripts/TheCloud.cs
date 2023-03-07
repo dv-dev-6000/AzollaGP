@@ -27,8 +27,8 @@ namespace Assets.Scripts
         public static bool uiMenuOpen { get; set; }             // is a UI menu currently open
         public static int credits { get; set; }                 // total credits
 
-        public static int minSecurity { get; set; }
-        public static int securityScore { get; set; }
+        public static int minScience { get; set; }
+        public static int scienceScore { get; set; }
         public static int minMorale { get; set; }
         public static int moraleScore { get; set; }
         public static int minEnvironment { get; set; }
