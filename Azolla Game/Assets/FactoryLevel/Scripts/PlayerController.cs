@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(4f, 8f);
 
+    // Player health
+    public int maxHealth = 50;
+    public int currentHealth;
+
     // Serialized Fields
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -37,15 +41,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
+    public HealthBar healthBar;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H)) 
+        {
+            TakeDamage(10); 
+        }
+
         if (isDashing)
         {
             return;
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
 
         if(IsGrounded() && !Input.GetButton("Jump"))
         {
@@ -78,6 +96,12 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     private void FixedUpdate()
