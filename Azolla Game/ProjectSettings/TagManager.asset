@@ -15,6 +15,7 @@ TagManager:
   - PCs
   - FrontWall
   - CollideCam
+  - Spikes
   layers:
   - Default
   - TransparentFX
