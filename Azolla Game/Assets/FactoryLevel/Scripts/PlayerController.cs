@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 50;
     public int currentHealth;
 
+    // Sound
+    AudioSource audioSrc;
+
     // Serialized Fields
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -77,12 +81,14 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
+                audioSrc.Play();
             }
         }
 
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            audioSrc.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
