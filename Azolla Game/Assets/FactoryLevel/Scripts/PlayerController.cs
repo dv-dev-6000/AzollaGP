@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Move and jump
     private float horizontal;
-    private float speed = 4.3f;
+    private float speed = 5f;
     private float jumpingPower = 12f;
     private bool isFacingRight = true;
     // Dash
