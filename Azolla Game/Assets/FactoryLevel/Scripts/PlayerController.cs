@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(4f, 8f);
+    // Coyote time
+    // Can still jump 0.2f after leaving the ground
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
 
     // Player health
     public int maxHealth = 50;
@@ -68,6 +72,14 @@ public class PlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        if(IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
         if(IsGrounded() && !Input.GetButton("Jump"))
         {
@@ -76,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (IsGrounded() || doubleJump)
+            if (coyoteTimeCounter > 0f || doubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
@@ -89,6 +101,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             audioSrc.Play();
+
+            coyoteTimeCounter = 0f;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
