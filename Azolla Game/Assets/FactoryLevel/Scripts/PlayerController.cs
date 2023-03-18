@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // Can still jump 0.2f after leaving the ground
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    // Dust
+    public ParticleSystem dust;
 
     // Player health
     public int maxHealth = 50;
@@ -94,7 +96,10 @@ public class PlayerController : MonoBehaviour
 
                 doubleJump = !doubleJump;
                 audioSrc.Play();
+                CreateDust();
             }
+            
+
         }
 
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
@@ -206,6 +211,7 @@ public class PlayerController : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            CreateDust();
         }
     }
 
@@ -223,5 +229,10 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 }
