@@ -16,6 +16,10 @@ TagManager:
   - FrontWall
   - CollideCam
   - Spikes
+  - Wood
+  - IronOre
+  - GoldOre
+  - CopperOre
   layers:
   - Default
   - TransparentFX

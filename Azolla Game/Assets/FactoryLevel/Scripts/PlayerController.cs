@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,38 +35,49 @@ public class PlayerController : MonoBehaviour
     // Can still jump 0.2f after leaving the ground
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    // Dust
-    public ParticleSystem dust;
-    
     // Player health
     public int maxHealth = 50;
     public int currentHealth;
-
-    // Sound
-    AudioSource audioSrc;
-
+    // Collectibles
+    private int woodCount = 0;
+    private int ironCount = 0;
+    private int copperCount = 0;
+    private int goldCount = 0;
+    
     // Serialized Fields
+    // Rigidbody, ground check/layer
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    // Trail effect
     [SerializeField] private TrailRenderer tr;
+    // Wall checks
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
+    // Audio sources
+    [SerializeField] private AudioSource jumpEffect;
+    [SerializeField] private AudioSource oreCollectEffect;
+    [SerializeField] private AudioSource woodCollectEffect;
+    // UI labels for collectibles
+    [SerializeField] private Text woodText;
+    [SerializeField] private Text ironText;
+    [SerializeField] private Text copperText;
+    [SerializeField] private Text goldText;
 
+    public ParticleSystem dust;
     public HealthBar healthBar;
     private Animator anim;
+
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        audioSrc = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim = GetComponent<Animator>();
-        //Trigger running and jumping animation.
         anim.SetBool("Run", horizontal != 0);
         anim.SetBool("IsGrounded", IsGrounded());
 
@@ -78,6 +92,8 @@ public class PlayerController : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        
 
         if(IsGrounded())
         {
@@ -100,7 +116,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
-                audioSrc.Play();
+                jumpEffect.Play();
                 CreateDust();
             }
             
@@ -110,7 +126,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            audioSrc.Play();
+            jumpEffect.Play();
 
             coyoteTimeCounter = 0f;
         }
@@ -239,5 +255,44 @@ public class PlayerController : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Wood
+        if (collision.gameObject.CompareTag("Wood"))
+        {
+            woodCollectEffect.Play();
+            Destroy(collision.gameObject);
+            woodCount++;
+            woodText.text = "Wood: " + woodCount;
+        }
+
+        // Iron
+        if (collision.gameObject.CompareTag("IronOre"))
+        {
+            oreCollectEffect.Play();
+            Destroy(collision.gameObject);
+            ironCount++;
+            ironText.text = "Iron: " + ironCount;
+        }
+
+        // Gold
+        if (collision.gameObject.CompareTag("GoldOre"))
+        {
+            oreCollectEffect.Play();
+            Destroy(collision.gameObject);
+            goldCount++;
+            goldText.text = "Gold: " + goldCount;
+        }
+
+        // Copper
+        if (collision.gameObject.CompareTag("CopperOre"))
+        {
+            oreCollectEffect.Play();
+            Destroy(collision.gameObject);
+            copperCount++;
+            copperText.text = "Copper " + copperCount;
+        }
     }
 }
