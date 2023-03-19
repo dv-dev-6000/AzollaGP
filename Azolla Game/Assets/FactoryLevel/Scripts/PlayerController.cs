@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     // Can still jump 0.2f after leaving the ground
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    // Bounce variable
+    private float bounceSpeed = 7f;
     // Player health
     public int maxHealth = 50;
     public int currentHealth;
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource jumpEffect;
     [SerializeField] private AudioSource oreCollectEffect;
     [SerializeField] private AudioSource woodCollectEffect;
+    [SerializeField] private AudioSource damageEffect;
     // UI labels for collectibles
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
@@ -257,6 +260,17 @@ public class PlayerController : MonoBehaviour
         dust.Play();
     }
 
+    // Player collision with obsticles
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("SpikesDanger"))
+        {
+            rb.velocity += Vector2.up * bounceSpeed;
+            damageEffect.Play();
+        }
+    }
+
+    // Player collision with collectibles
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Wood
@@ -294,5 +308,7 @@ public class PlayerController : MonoBehaviour
             copperCount++;
             copperText.text = "Copper " + copperCount;
         }
+
+        
     }
 }
