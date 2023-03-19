@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private float coyoteTimeCounter;
     // Dust
     public ParticleSystem dust;
-
+    
     // Player health
     public int maxHealth = 50;
     public int currentHealth;
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
     public HealthBar healthBar;
-
+    private Animator anim;
     private void Start()
     {
         currentHealth = maxHealth;
@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim = GetComponent<Animator>();
+        //Trigger running and jumping animation.
+        anim.SetBool("Run", horizontal != 0);
+        anim.SetBool("IsGrounded", IsGrounded());
+
         if (Input.GetKeyDown(KeyCode.H)) 
         {
             TakeDamage(10); 
