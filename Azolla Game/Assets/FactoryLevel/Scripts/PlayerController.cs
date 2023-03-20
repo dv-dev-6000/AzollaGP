@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     // Dash
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 24.0f;
-    private float dashingTime = 0.2f;
+    private float dashingPower = 30.0f;
+    private float dashingTime = 0.25f;
     private float dashingCooldown = 1f;
     // Double Jump
     private bool doubleJump;
@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource oreCollectEffect;
     [SerializeField] private AudioSource woodCollectEffect;
     [SerializeField] private AudioSource damageEffect;
+    [SerializeField] private AudioSource deathEffect;
     // UI labels for collectibles
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
         anim = GetComponent<Animator>();
     }
 
@@ -84,11 +86,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Run", horizontal != 0);
         anim.SetBool("IsGrounded", IsGrounded());
 
-        if (Input.GetKeyDown(KeyCode.H)) 
-        {
-            TakeDamage(10); 
-        }
-
         if (isDashing)
         {
             return;
@@ -96,8 +93,14 @@ public class PlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        
+        // If 0 health, player dies
+        if (currentHealth == 0)
+        {
+            //deathEffect.Play();
+            //Destroy(gameObject);
+        }
 
+        // Coyote time counter
         if(IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -107,11 +110,13 @@ public class PlayerController : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        // Disable double jump if player is on the ground
         if(IsGrounded() && !Input.GetButton("Jump"))
         {
             doubleJump = false;
         }
 
+        // Double jump
         if (Input.GetButtonDown("Jump"))
         {
             if (coyoteTimeCounter > 0f || doubleJump)
@@ -122,10 +127,9 @@ public class PlayerController : MonoBehaviour
                 jumpEffect.Play();
                 CreateDust();
             }
-            
-
         }
 
+        // Jump and reset coyote time counter
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
@@ -134,10 +138,13 @@ public class PlayerController : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
+        // Dash
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
         }
+
+        // Wall slide - jump methods.
         WallSlide();
         WallJump();
 
@@ -147,6 +154,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Reducing player health and setting as its current health
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -155,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Dash
         if (isDashing)
         {
             return;
@@ -166,16 +175,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Check player isGrounded
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-
+    // Check player isWalled
     private bool IsWalled()
     {
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
     }
 
+    // Wall slide
     private void WallSlide()
     {
         if (IsWalled() && !IsGrounded() && horizontal != 0f)
@@ -189,6 +200,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Wall jump
     private void WallJump()
     {
         if (isWallSliding)
@@ -227,6 +239,7 @@ public class PlayerController : MonoBehaviour
         isWallJumping = false;
     }
 
+    // Flip player sprite
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -239,6 +252,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Dash settings
     private IEnumerator Dash()
     {
         canDash = false;
@@ -255,6 +269,7 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
+    // Create player dust effect
     void CreateDust()
     {
         dust.Play();
@@ -266,6 +281,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("SpikesDanger"))
         {
             rb.velocity += Vector2.up * bounceSpeed;
+            TakeDamage(10);
             damageEffect.Play();
         }
     }

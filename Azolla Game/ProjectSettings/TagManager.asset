@@ -20,6 +20,10 @@ TagManager:
   - IronOre
   - GoldOre
   - CopperOre
+  - SpikesDanger
+  - Trigger
+  - PushGear
+  - Door
   layers:
   - Default
   - TransparentFX
