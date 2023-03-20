@@ -201,6 +201,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Wall jump
+    
     private void WallJump()
     {
         if (isWallSliding)
@@ -238,7 +239,7 @@ public class PlayerController : MonoBehaviour
     {
         isWallJumping = false;
     }
-
+    
     // Flip player sprite
     private void Flip()
     {
@@ -294,7 +295,7 @@ public class PlayerController : MonoBehaviour
         {
             woodCollectEffect.Play();
             Destroy(collision.gameObject);
-            woodCount++;
+            woodCount += 3;
             woodText.text = "Wood: " + woodCount;
         }
 
@@ -303,7 +304,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            ironCount++;
+            ironCount += 7;
             ironText.text = "Iron: " + ironCount;
         }
 
@@ -312,7 +313,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            goldCount++;
+            goldCount += 9;
             goldText.text = "Gold: " + goldCount;
         }
 
@@ -321,7 +322,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            copperCount++;
+            copperCount += 5;
             copperText.text = "Copper " + copperCount;
         }
 
