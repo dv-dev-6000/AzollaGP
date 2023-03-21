@@ -91,6 +91,24 @@ public class BuildPlotScript : MonoBehaviour
             case "env_1_1":
                 this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_1_1;
                 break;
+            case "sec_2_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_2_1;
+                break;
+            case "mor_2_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_2_1;
+                break;
+            case "env_2_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_2_1;
+                break;
+            case "sec_3_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_3_1;
+                break;
+            case "mor_3_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_3_1;
+                break;
+            case "env_3_1":
+                this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_3_1;
+                break;
             case "empty_0_0":
                 this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Emp_0_0;
                 break;

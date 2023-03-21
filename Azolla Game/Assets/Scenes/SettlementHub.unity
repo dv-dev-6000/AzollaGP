@@ -342,7 +342,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 75726435}
   m_OnClick:
     m_PersistentCalls:
@@ -502,7 +502,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 93981290}
   m_OnClick:
     m_PersistentCalls:
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Recycling Facility
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -1230,7 +1230,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 163052175}
   m_OnClick:
     m_PersistentCalls:
@@ -1433,7 +1433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184000411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3149, y: -4.651, z: 0}
+  m_LocalPosition: {x: 0.46, y: -4.651, z: 0}
   m_LocalScale: {x: 19.2258, y: 1.2621, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: University
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -2568,7 +2568,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 447908844}
   m_OnClick:
     m_PersistentCalls:
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Recreation Centre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -4594,6 +4594,12 @@ MonoBehaviour:
   wTowerOne: {fileID: 21300000, guid: d364c8b5d7bddc14496c0ba7b46a9788, type: 3}
   parkOne: {fileID: 21300000, guid: 32ef0c311db0cf8449171518348d03c3, type: 3}
   airpureOne: {fileID: 21300000, guid: ee2849715e717b24680e1e3248b5a41a, type: 3}
+  uniOne: {fileID: 21300000, guid: ba0bdaa2c54f8ea489e9fe26a8263ddf, type: 3}
+  recCentreOne: {fileID: 21300000, guid: da169f579ce55f44490ba3d9dab9fe19, type: 3}
+  windOne: {fileID: 21300000, guid: 3a4aae9d429ffdd4e99eed00c91d111d, type: 3}
+  observatoryOne: {fileID: 21300000, guid: dfd27542e91af5647898426068482f04, type: 3}
+  gymOne: {fileID: 21300000, guid: 5d282ef2f2ed99546af44bfa6b7428ea, type: 3}
+  recycleFacOne: {fileID: 21300000, guid: 2b534afcdbaba7a4fb7cffd0beec4007, type: 3}
 --- !u!1 &837660240
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,7 +5326,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1046468601}
   m_OnClick:
     m_PersistentCalls:
@@ -6258,7 +6264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168088838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 1.34, z: 0}
+  m_LocalPosition: {x: 0.48, y: 1.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6573,7 +6579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Gym
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -7010,6 +7016,12 @@ MonoBehaviour:
   sciOne: {fileID: 1709353226}
   morOne: {fileID: 107234563}
   envOne: {fileID: 584943880}
+  sciTwo: {fileID: 163052174}
+  morTwo: {fileID: 93981289}
+  envTwo: {fileID: 1046468600}
+  sciThree: {fileID: 1517616256}
+  morThree: {fileID: 447908843}
+  envThree: {fileID: 75726434}
   close: {fileID: 1108228598}
   buildIt: {fileID: 1715983413}
   buildType: {fileID: 617392769}
@@ -7942,7 +7954,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1517616257}
   m_OnClick:
     m_PersistentCalls:
@@ -8556,6 +8568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2012923455}
+  spriteManager: {fileID: 837157156}
   close: {fileID: 1186876289}
   upgradeIt: {fileID: 1106543040}
   buildType: {fileID: 2001976275}
@@ -8564,6 +8577,7 @@ MonoBehaviour:
   buildInfo: {fileID: 358808941}
   matCost: {fileID: 335817874}
   timeCost: {fileID: 139644517}
+  image: {fileID: 990071685}
   plot0: {fileID: 1382191233}
   plot1: {fileID: 215114070}
   plot2: {fileID: 1143919565}
@@ -9729,7 +9743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Observatory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
@@ -10010,7 +10024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Wind Turbine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}
   m_sharedMaterial: {fileID: -7664548128349796426, guid: e85e6bf3d32122544887c4f65d00fcf0, type: 2}

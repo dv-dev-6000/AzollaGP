@@ -142,6 +142,29 @@ public class GameManagerScript : MonoBehaviour
         matDisplayText.GetComponent<TextMeshProUGUI>().text = "" + materialsCount;
     }
     
+    public void AlterScores(string targetScore, int changeValue, int minValue = 0)
+    {
+        switch (targetScore)
+        {
+            case "sec":
+                ScienceScore += changeValue;
+                scienceMin = minValue;
+                break;
+            case "mor":
+                MoraleScore += changeValue;
+                moraleMin = minValue;
+                break;
+            case "env":
+                EnvironmentScore += changeValue;
+                environmentMin = minValue;
+                break;
+        }
+
+        
+
+        UpdateScoreValues();
+    }
+
     /// <summary>
     /// on click event logic for build button 
     /// </summary>
@@ -177,9 +200,9 @@ public class GameManagerScript : MonoBehaviour
     void AddMaterials()
     {
         materialsCount = materialsCount + matPrize;
-        ScienceScore += 25;
-        EnvironmentScore += 10;
-        MoraleScore += 15;
+        //ScienceScore += 25;
+        //EnvironmentScore += 10;
+        //MoraleScore += 15;
         UpdateScoreValues();
     }
 

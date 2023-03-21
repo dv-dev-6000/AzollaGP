@@ -23,6 +23,18 @@ public class BuilderScript : MonoBehaviour
     [SerializeField]
     private Button envOne;
     [SerializeField]
+    private Button sciTwo;
+    [SerializeField]
+    private Button morTwo;
+    [SerializeField]
+    private Button envTwo;
+    [SerializeField]
+    private Button sciThree;
+    [SerializeField]
+    private Button morThree;
+    [SerializeField]
+    private Button envThree;
+    [SerializeField]
     private Button close;
     [SerializeField]
     private Button buildIt;
@@ -54,6 +66,12 @@ public class BuilderScript : MonoBehaviour
     BuildingInfo watchtower = new BuildingInfo(1);
     BuildingInfo park = new BuildingInfo(2);
     BuildingInfo airPurifier = new BuildingInfo(3);
+    BuildingInfo university = new BuildingInfo(4);
+    BuildingInfo recreationCentre = new BuildingInfo(5);
+    BuildingInfo windTurbine = new BuildingInfo(6);
+    BuildingInfo observatory = new BuildingInfo(7);
+    BuildingInfo gym = new BuildingInfo(8);
+    BuildingInfo recyclingFacility = new BuildingInfo(9);
     #endregion
 
     [SerializeField]
@@ -83,6 +101,25 @@ public class BuilderScript : MonoBehaviour
         Button eOne = envOne.GetComponent<Button>();
         eOne.onClick.AddListener(eOnePress);
 
+        Button sTwo = sciTwo.GetComponent<Button>();
+        sTwo.onClick.AddListener(sTwoPress);
+
+        Button mTwo = morTwo.GetComponent<Button>();
+        mTwo.onClick.AddListener(mTwoPress);
+
+        Button eTwo = envTwo.GetComponent<Button>();
+        eTwo.onClick.AddListener(eTwoPress);
+
+        Button sThree = sciThree.GetComponent<Button>();
+        sThree.onClick.AddListener(sThreePress);
+
+        Button mThree = morThree.GetComponent<Button>();
+        mThree.onClick.AddListener(mThreePress);
+
+        Button eThree = envThree.GetComponent<Button>();
+        eThree.onClick.AddListener(eThreePress);
+
+
         Button closeMe = close.GetComponent<Button>();
         closeMe.onClick.AddListener(closeMePress);
 
@@ -100,6 +137,7 @@ public class BuilderScript : MonoBehaviour
         
     }
 
+    #region Security Building Button Press Actions ** CHANGED TO SCIENCE **
     void sOnePress()
     {
         // Set Building Name
@@ -118,6 +156,45 @@ public class BuilderScript : MonoBehaviour
         selectedType = "sec_1_1";
     }
 
+    void sTwoPress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = university.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = university.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = university.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = university.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + university.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + university.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_2_1; //**
+
+        selectedType = "sec_2_1";
+    }
+
+    void sThreePress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = observatory.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = observatory.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = observatory.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = observatory.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + observatory.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + observatory.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_3_1; //**
+
+        selectedType = "sec_3_1";
+    }
+
+    #endregion
+
+    #region Morale Building Button Press Actions
     void mOnePress()
     {
         // Set Building Name
@@ -136,6 +213,45 @@ public class BuilderScript : MonoBehaviour
         selectedType = "mor_1_1";
     }
 
+    void mTwoPress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = recreationCentre.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = recreationCentre.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = recreationCentre.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = recreationCentre.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + recreationCentre.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + recreationCentre.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_2_1; //**
+
+        selectedType = "mor_2_1";
+    }
+
+    void mThreePress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = gym.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = gym.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = gym.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = gym.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + gym.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + gym.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_3_1; //**
+
+        selectedType = "mor_3_1";
+    }
+
+    #endregion
+
+    #region Environment Building Button Press Actions
     void eOnePress()
     {
         // Set Building Name
@@ -153,6 +269,44 @@ public class BuilderScript : MonoBehaviour
 
         selectedType = "env_1_1";
     }
+
+    void eTwoPress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = windTurbine.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = windTurbine.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = windTurbine.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = windTurbine.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + windTurbine.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + windTurbine.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_2_1; //**
+
+        selectedType = "env_2_1";
+    }
+
+    void eThreePress()
+    {
+        // Set Building Name
+        buildType.GetComponent<TextMeshProUGUI>().text = recyclingFacility.Name;
+        // Set Benefits
+        benOne.GetComponent<TextMeshProUGUI>().text = recyclingFacility.BenOne;
+        benTwo.GetComponent<TextMeshProUGUI>().text = recyclingFacility.BenTwo;
+        // Set Descriptor
+        buildInfo.GetComponent<TextMeshProUGUI>().text = recyclingFacility.Info;
+        // Set Costs
+        matCost.GetComponent<TextMeshProUGUI>().text = "" + recyclingFacility.MatCost;
+        timeCost.GetComponent<TextMeshProUGUI>().text = "" + recyclingFacility.TimeCost;
+        // set image
+        image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_3_1; //**
+
+        selectedType = "env_3_1";
+    }
+
+    #endregion
 
     void closeMePress()
     {
@@ -192,6 +346,8 @@ public class BuilderScript : MonoBehaviour
                 plot5.GetComponent<BuildPlotScript>().UpdatePlot();
                 break;
         }
+
+        //gms.AlterScores(TheCloud.Plots[id].Type, 25, 25);
 
         closeMePress();
     }

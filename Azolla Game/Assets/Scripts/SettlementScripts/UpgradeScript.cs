@@ -10,6 +10,8 @@ public class UpgradeScript : MonoBehaviour
 {
     [SerializeField]
     GameObject gameManager;
+    [SerializeField]
+    GameObject spriteManager;
 
     #region Buttons
     [SerializeField]
@@ -33,12 +35,21 @@ public class UpgradeScript : MonoBehaviour
     private TextMeshProUGUI matCost;
     [SerializeField]
     private TextMeshProUGUI timeCost;
+
+    [SerializeField]
+    private Image image;
     #endregion
 
     #region Building Objects
     BuildingInfo watchtower = new BuildingInfo(1);
     BuildingInfo park = new BuildingInfo(2);
     BuildingInfo airPurifier = new BuildingInfo(3);
+    BuildingInfo university = new BuildingInfo(4);
+    BuildingInfo recreationCentre = new BuildingInfo(5);
+    BuildingInfo windTurbine = new BuildingInfo(6);
+    BuildingInfo observatory = new BuildingInfo(7);
+    BuildingInfo gym = new BuildingInfo(8);
+    BuildingInfo recyclingFacility = new BuildingInfo(9);
     #endregion
 
     [SerializeField]
@@ -118,12 +129,39 @@ public class UpgradeScript : MonoBehaviour
         {
             case "sec_1":
                 currBuildType = watchtower;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_1_1;
                 break;
             case "mor_1":
                 currBuildType = park;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_1_1;
                 break;
             case "env_1":
                 currBuildType = airPurifier;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_1_1;
+                break;
+            case "sec_2":
+                currBuildType = university;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_2_1;
+                break;
+            case "mor_2":
+                currBuildType = recreationCentre;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_2_1;
+                break;
+            case "env_2":
+                currBuildType = windTurbine;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_2_1;
+                break;
+            case "sec_3":
+                currBuildType = observatory;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Sec_3_1;
+                break;
+            case "mor_3":
+                currBuildType = gym;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Mor_3_1;
+                break;
+            case "env_3":
+                currBuildType = recyclingFacility;
+                image.GetComponent<Image>().sprite = spriteManager.GetComponent<SpriteManScript>().Env_3_1;
                 break;
             default:
                 currBuildType = watchtower;
@@ -140,5 +178,6 @@ public class UpgradeScript : MonoBehaviour
         // Set Costs
         matCost.GetComponent<TextMeshProUGUI>().text = "" + currBuildType.MatCostUP;
         timeCost.GetComponent<TextMeshProUGUI>().text = "" + currBuildType.TimeCostUP;
+
     }
 }
