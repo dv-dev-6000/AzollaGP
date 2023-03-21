@@ -45,7 +45,12 @@ public class PlayerController : MonoBehaviour
     private int ironCount = 0;
     private int copperCount = 0;
     private int goldCount = 0;
-    
+    // Collectible values - CONST
+    private const int WOODVALUE = 3;
+    private const int COPPERVALUE = 5;
+    private const int IRONVALUE = 7;
+    private const int GOLDVALUE = 10;
+
     // Serialized Fields
     // Rigidbody, ground check/layer
     [SerializeField] private Rigidbody2D rb;
@@ -295,7 +300,7 @@ public class PlayerController : MonoBehaviour
         {
             woodCollectEffect.Play();
             Destroy(collision.gameObject);
-            woodCount += 3;
+            woodCount += WOODVALUE;
             woodText.text = "Wood: " + woodCount;
         }
 
@@ -304,7 +309,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            ironCount += 7;
+            ironCount += IRONVALUE;
             ironText.text = "Iron: " + ironCount;
         }
 
@@ -313,7 +318,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            goldCount += 9;
+            goldCount += GOLDVALUE;
             goldText.text = "Gold: " + goldCount;
         }
 
@@ -322,7 +327,7 @@ public class PlayerController : MonoBehaviour
         {
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
-            copperCount += 5;
+            copperCount += COPPERVALUE;
             copperText.text = "Copper " + copperCount;
         }
 
