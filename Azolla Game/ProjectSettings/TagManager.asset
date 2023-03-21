@@ -15,14 +15,23 @@ TagManager:
   - PCs
   - FrontWall
   - CollideCam
+  - Spikes
+  - Wood
+  - IronOre
+  - GoldOre
+  - CopperOre
+  - SpikesDanger
+  - Trigger
+  - PushGear
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 
