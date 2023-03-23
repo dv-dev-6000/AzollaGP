@@ -24,6 +24,13 @@ TagManager:
   - Trigger
   - PushGear
   - Door
+  - dashBubble
+  - Djump Bubble
+  - WjumpBubble
+  - PC1
+  - PC2
+  - PC3
+  - PC4
   layers:
   - Default
   - TransparentFX

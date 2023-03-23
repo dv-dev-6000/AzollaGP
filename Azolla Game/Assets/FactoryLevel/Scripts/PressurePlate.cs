@@ -23,7 +23,7 @@ public class PressurePlate : MonoBehaviour
         if (collision.transform.name == "Player")
         {
                 // Move pressure plate down
-                transform.Translate(0, -0.0075f, 0);
+                transform.Translate(0, -0.0060f, 0);
                 
             doorVertical.transform.Translate(0,0.05f,0);
             doorHorizontal.transform.Translate(0.05f,0, 0);

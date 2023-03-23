@@ -14,18 +14,18 @@ public class PlayerController : MonoBehaviour
     private float jumpingPower = 12f;
     private bool isFacingRight = true;
     // Dash
-    private bool canDash = true;
+    private bool canDash = false;
     private bool isDashing;
     private float dashingPower = 30.0f;
     private float dashingTime = 0.25f;
     private float dashingCooldown = 1f;
     // Double Jump
-    private bool doubleJump;
+    private bool doubleJump = false;
     // Wall Slide
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
     // Wall Jump
-    private bool isWallJumping;
+    private bool isWallJumping = false;
     private float wallJumpingDirection;
     private float WallJumpingTime = 0.2f;
     private float wallJumpingCounter;
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource damageEffect;
     [SerializeField] private AudioSource deathEffect;
     [SerializeField] private AudioSource dashEffect;
+    [SerializeField] private AudioSource powerUpEffect;
     // UI labels for collectibles
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
@@ -109,17 +110,18 @@ public class PlayerController : MonoBehaviour
         // Coyote time counter
         if(IsGrounded())
         {
+            //canDash = false;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
+            //canDash = true;
             coyoteTimeCounter -= Time.deltaTime;
         }
 
         // Disable double jump if player is on the ground
         if(IsGrounded() && !Input.GetButton("Jump"))
         {
-            canDash = false;
             doubleJump = false;
         }
 
@@ -128,7 +130,6 @@ public class PlayerController : MonoBehaviour
         {
             if (coyoteTimeCounter > 0f || doubleJump)
             {
-                canDash = true;
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
@@ -140,7 +141,6 @@ public class PlayerController : MonoBehaviour
         // Jump and reset coyote time counter
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
-            canDash = true;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             jumpEffect.Play();
 
@@ -266,18 +266,20 @@ public class PlayerController : MonoBehaviour
     // Dash settings
     private IEnumerator Dash()
     {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+
+            canDash = false;
+            isDashing = true;
+            float originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+            tr.emitting = true;
+            yield return new WaitForSeconds(dashingTime);
+            tr.emitting = false;
+            rb.gravityScale = originalGravity;
+            isDashing = false;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+     
     }
 
     // Create player dust effect
@@ -295,6 +297,8 @@ public class PlayerController : MonoBehaviour
             TakeDamage(10);
             damageEffect.Play();
         }
+
+
     }
 
     // Player collision with collectibles
@@ -336,6 +340,24 @@ public class PlayerController : MonoBehaviour
             copperText.text = "Copper " + copperCount;
         }
 
-        
+        // Dash Bubble
+        if (collision.gameObject.CompareTag("dashBubble"))
+        {
+            Destroy(collision.gameObject);
+            canDash = true;
+            powerUpEffect.Play();
+        }
+        //// Double Jump Bubble
+        //if (collision.gameObject.CompareTag("Djump Bubble"))
+        //{
+        //    Destroy(collision.gameObject);
+        //    doubleJump = true;
+        //}
+        //// Wall Jump Bubble
+        //if (collision.gameObject.CompareTag("Wjump Bubble"))
+        //{
+        //    Destroy(collision.gameObject);
+        //    isWallJumping = true;
+        //}
     }
 }
