@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource woodCollectEffect;
     [SerializeField] private AudioSource damageEffect;
     [SerializeField] private AudioSource deathEffect;
+    [SerializeField] private AudioSource dashEffect;
     // UI labels for collectibles
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
@@ -99,11 +100,11 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         // If 0 health, player dies
-        if (currentHealth == 0)
-        {
-            //deathEffect.Play();
-            //Destroy(gameObject);
-        }
+        //if (currentHealth == 0)
+        //{
+        //    deathEffect.Play();
+        //    Destroy(gameObject);
+        //}
 
         // Coyote time counter
         if(IsGrounded())
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
         // Disable double jump if player is on the ground
         if(IsGrounded() && !Input.GetButton("Jump"))
         {
+            canDash = false;
             doubleJump = false;
         }
 
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             if (coyoteTimeCounter > 0f || doubleJump)
             {
+                canDash = true;
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
@@ -137,6 +140,7 @@ public class PlayerController : MonoBehaviour
         // Jump and reset coyote time counter
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
+            canDash = true;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             jumpEffect.Play();
 
@@ -147,6 +151,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
+            dashEffect.Play();
         }
 
         // Wall slide - jump methods.

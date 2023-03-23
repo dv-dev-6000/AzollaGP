@@ -4,54 +4,46 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    public Vector3 originalPos;
-    bool moveBack = false;
+
+    public GameObject doorVertical;
+    public GameObject doorHorizontal;
+
+    [SerializeField] private AudioSource doorEffect;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        originalPos = transform.position;
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.transform.name == "Player" || collision.transform.name == "PushableGear")
+        if (collision.transform.name == "Player")
         {
                 // Move pressure plate down
-                transform.Translate(0, -0.01f, 0);
-                moveBack = false;
+                transform.Translate(0, -0.0075f, 0);
+                
+            doorVertical.transform.Translate(0,0.05f,0);
+            doorHorizontal.transform.Translate(0.05f,0, 0);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.name == "Player" || collision.transform.name == "PushableGear")
+        if (collision.transform.name == "Player")
         {
             collision.transform.parent = transform;
+            doorEffect.Play();
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.name == "Player" || collision.transform.name == "PushableGear")
+        if (collision.transform.name == "Player")
         {
             collision.transform.parent = null;
-            moveBack = true;
-        }
-    }
-
-    private void Update()
-    {
-        if (moveBack)
-        {
-            if (transform.position.y < originalPos.y)
-            {
-                transform.Translate(0, 0.01f, 0);
-            }
-            else
-            {
-                moveBack = false;
-            }
         }
     }
 }
