@@ -6,11 +6,17 @@ public class PlatformManager : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.SetParent(transform);
+        if (collision.transform.name == "Player")
+        {
+            collision.transform.parent = transform;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        collision.transform.SetParent(null);
+        if (collision.transform.name == "Player")
+        {
+            collision.transform.parent = null;
+        }
     }
 }
