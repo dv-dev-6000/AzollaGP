@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-
     public GameObject doorVertical;
-    public GameObject doorHorizontal;
 
     [SerializeField] private AudioSource doorEffect;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -26,7 +16,6 @@ public class PressurePlate : MonoBehaviour
                 transform.Translate(0, -0.0060f, 0);
                 
             doorVertical.transform.Translate(0,0.05f,0);
-            doorHorizontal.transform.Translate(0.05f,0, 0);
         }
     }
 
