@@ -62,11 +62,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
     // Audio sources
+    [SerializeField] private AudioSource bgMusic;
     [SerializeField] private AudioSource jumpEffect;
     [SerializeField] private AudioSource oreCollectEffect;
     [SerializeField] private AudioSource woodCollectEffect;
     [SerializeField] private AudioSource damageEffect;
-    [SerializeField] private AudioSource deathEffect;
     [SerializeField] private AudioSource dashEffect;
     [SerializeField] private AudioSource powerUpEffect;
     // UI labels for collectibles
@@ -101,14 +101,14 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         // If 0 health, player dies
-        //if (currentHealth == 0)
-        //{
-        //    deathEffect.Play();
-        //    Destroy(gameObject);
-        //}
+        if (currentHealth == 0)
+        {
+            PlayerDied();
+            bgMusic.Stop();
+        }
 
         // Coyote time counter
-        if(IsGrounded())
+        if (IsGrounded())
         {
             //canDash = false;
             coyoteTimeCounter = coyoteTime;
@@ -162,6 +162,12 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    private void PlayerDied()
+    {
+        AreaManager.instance.GameOver();
+        gameObject.SetActive(false);
     }
 
     // Reducing player health and setting as its current health
@@ -347,12 +353,13 @@ public class PlayerController : MonoBehaviour
             canDash = true;
             powerUpEffect.Play();
         }
-        //// Double Jump Bubble
-        //if (collision.gameObject.CompareTag("Djump Bubble"))
-        //{
-        //    Destroy(collision.gameObject);
-        //    doubleJump = true;
-        //}
+        // Double Jump Bubble
+        if (collision.gameObject.CompareTag("Djump Bubble"))
+        {
+            Destroy(collision.gameObject);
+            doubleJump = true;
+            powerUpEffect.Play();
+        }
         //// Wall Jump Bubble
         //if (collision.gameObject.CompareTag("Wjump Bubble"))
         //{
