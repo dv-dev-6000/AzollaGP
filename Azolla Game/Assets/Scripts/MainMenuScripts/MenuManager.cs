@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public Texture2D cursor;
+
+    private void Start()
+    {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+    }
     public void ChangeSceneByName(string name)
     {
         SceneManager.LoadScene(name);
