@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    Timer timer;
+
     // Move and jump
     private float horizontal;
     private float speed = 5f;

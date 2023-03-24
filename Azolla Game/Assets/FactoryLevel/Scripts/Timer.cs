@@ -16,6 +16,13 @@ public class Timer : MonoBehaviour
         timeOn = true;
     }
 
+    // Player dies if time runs out
+    private void PlayerDied()
+    {
+        AreaManager.instance.GameOver();
+        gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -28,9 +35,9 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                Debug.Log("Out of time");
                 timeLeft = 0;
                 timeOn = false;
+                PlayerDied();
             }
         }
     }

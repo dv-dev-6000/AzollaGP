@@ -7,8 +7,14 @@ using UnityEngine.UI;
 public class AreaManager : MonoBehaviour
 {
     public static AreaManager instance;
+    public Texture2D cursor;
     [SerializeField] private AudioSource deathEffect;
 
+    private void Start()
+    {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.visible = false;
+    }
     private void Awake()
     {
         if (AreaManager.instance == null)
@@ -23,6 +29,7 @@ public class AreaManager : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.visible = true;
         UIManager _ui = GetComponent<UIManager>();
 
         if (_ui != null)
