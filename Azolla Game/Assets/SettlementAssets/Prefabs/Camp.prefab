@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7288394445183193008
 Transform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5651789899215733903
 Transform:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8060882971855349192}
   - component: {fileID: 8060882971855349193}
   - component: {fileID: 704979538544147585}
-  - component: {fileID: 151706848746930027}
+  - component: {fileID: 2571121976914589648}
   m_Layer: 0
   m_Name: Camp
   m_TagString: Untagged
@@ -460,7 +460,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.7
---- !u!114 &151706848746930027
+--- !u!114 &2571121976914589648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -469,11 +469,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8060882971855349207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90f098de6c648b4a986ad454646f3d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f47647df553d2141a3b10f5d77c9d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  spriteManager: {fileID: 0}
-  id: 0
   hovCir: {fileID: 2352400798906272288}
-  upgradeSprite: {fileID: 0}
+  upgradeOneSprite: {fileID: 1107114845852487610}

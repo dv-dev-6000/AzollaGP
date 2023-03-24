@@ -29,12 +29,17 @@ namespace Assets.Scripts
 
         public static int minScience { get; set; }
         public static int scienceScore { get; set; }
+        public static int scienceConv { get; set; }
         public static int minMorale { get; set; }
         public static int moraleScore { get; set; }
+        public static int moraleConv { get; set; }
         public static int minEnvironment { get; set; }
         public static int environmentScore { get; set; }
+        public static int environmentConv { get; set; }
 
         public static int settOneMaterials { get; set; }
+
+
 
         public static Plot[] Plots { get; set; } = {new Plot(), new Plot(), new Plot(), new Plot(), new Plot(), new Plot() };
 
