@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public Texture2D cursor;
+    [SerializeField] GameObject tutorialPanel;
+    [SerializeField] AudioSource menuSelect;
 
     private void Start()
     {
@@ -20,5 +22,11 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Application Exited");
         Application.Quit();
+    }
+
+    public void ToggleTutorialPanel()
+    {
+        menuSelect.Play();
+        tutorialPanel.SetActive(!tutorialPanel.activeSelf);
     }
 }
