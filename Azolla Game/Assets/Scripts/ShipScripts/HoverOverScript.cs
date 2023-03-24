@@ -5,24 +5,9 @@ using Assets.Scripts;
 
 public class HoverOverScript : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject componentOne;
-    [SerializeField]
-    private int id;
-    [SerializeField]
-    private RectTransform linkedMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private GameObject componentOne;
+    [SerializeField] private int id;
+    [SerializeField] private RectTransform linkedMenu;
 
     private void OnMouseOver()
     {
