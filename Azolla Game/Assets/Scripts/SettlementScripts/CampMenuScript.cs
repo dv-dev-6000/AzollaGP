@@ -10,6 +10,7 @@ public class CampMenuScript : MonoBehaviour
 {
     [SerializeField]
     GameObject gameManager;
+    GameManagerScript gms;
 
     #region Buttons
     [SerializeField]
@@ -38,6 +39,8 @@ public class CampMenuScript : MonoBehaviour
 
         Button convEnv = convertEnv.GetComponent<Button>();
         convEnv.onClick.AddListener(ConvertEnvPress);
+
+        gms = gameManager.GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -56,18 +59,33 @@ public class CampMenuScript : MonoBehaviour
     {
         if (TheCloud.settOneMaterials >= 50)
         {
-            
+            TheCloud.scienceScore += (50 * TheCloud.scienceConv) / 10;
+            TheCloud.settOneMaterials -= 50;
+
+            gms.UpdateScoreValues();
         }
     }
 
     private void ConvertMorPress()
     {
-        
+        if (TheCloud.settOneMaterials >= 50)
+        {
+            TheCloud.moraleScore += (50 * TheCloud.moraleConv) / 10;
+            TheCloud.settOneMaterials -= 50;
+
+            gms.UpdateScoreValues();
+        }
     }
 
     private void ConvertEnvPress()
     {
-        
+        if (TheCloud.settOneMaterials >= 50)
+        {
+            TheCloud.environmentScore += (50 * TheCloud.environmentConv) / 10;
+            TheCloud.settOneMaterials -= 50;
+
+            gms.UpdateScoreValues();
+        }
     }
 
 }

@@ -38,7 +38,11 @@ namespace Assets.Scripts
         public static int environmentConv { get; set; }
 
         public static int settOneMaterials { get; set; }
+        public static int settOneTimeBar { get; set; }
 
+        public static int goldValue { get; set; }
+        public static int ironValue { get; set; }
+        public static int copperValue { get; set; }
 
 
         public static Plot[] Plots { get; set; } = {new Plot(), new Plot(), new Plot(), new Plot(), new Plot(), new Plot() };

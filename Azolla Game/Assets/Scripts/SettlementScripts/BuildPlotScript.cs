@@ -116,6 +116,6 @@ public class BuildPlotScript : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = spriteManager.GetComponent<SpriteManScript>().Emp_0_0;
                 break;
         }
-        gameManager.GetComponent<GameManagerScript>().debugText.text = tmp;
+        //gameManager.GetComponent<GameManagerScript>().debugText.text = tmp;
     }
 }

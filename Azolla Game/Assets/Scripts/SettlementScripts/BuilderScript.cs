@@ -320,34 +320,38 @@ public class BuilderScript : MonoBehaviour
         // get ID
         int id = gms.currPlotSelection;
 
-        // set plot to building type
-        TheCloud.Plots[id].Type = selectedType.Substring(0, 3);
-        TheCloud.Plots[id].Option = int.Parse(selectedType[4].ToString());
-        TheCloud.Plots[id].Level = int.Parse(selectedType[6].ToString());
-
-        switch (id) 
+        // check funds
+        if (TheCloud.settOneMaterials >= int.Parse(matCost.text))
         {
-            case 0:
-                plot0.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-            case 1:
-                plot1.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-            case 2:
-                plot2.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-            case 3:
-                plot3.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-            case 4:
-                plot4.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-            case 5:
-                plot5.GetComponent<BuildPlotScript>().UpdatePlot();
-                break;
-        }
+            // set plot to building type
+            TheCloud.Plots[id].Type = selectedType.Substring(0, 3);
+            TheCloud.Plots[id].Option = int.Parse(selectedType[4].ToString());
+            TheCloud.Plots[id].Level = int.Parse(selectedType[6].ToString());
 
-        //gms.AlterScores(TheCloud.Plots[id].Type, 25, 25);
+            switch (id)
+            {
+                case 0:
+                    plot0.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+                case 1:
+                    plot1.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+                case 2:
+                    plot2.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+                case 3:
+                    plot3.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+                case 4:
+                    plot4.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+                case 5:
+                    plot5.GetComponent<BuildPlotScript>().UpdatePlot();
+                    break;
+            }
+
+            gms.AlterScores(TheCloud.Plots[id].Type, TheCloud.Plots[id].Option, TheCloud.Plots[id].Level, int.Parse(matCost.text), int.Parse(timeCost.text));
+        }
 
         closeMePress();
     }

@@ -3820,10 +3820,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -20417,6 +20417,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2012923455}
   close: {fileID: 1368811149}
+  convertSci: {fileID: 655478969}
+  convertMor: {fileID: 754685504}
+  convertEnv: {fileID: 143086011}
 --- !u!1 &1968047624
 GameObject:
   m_ObjectHideFlags: 0
@@ -21205,6 +21208,7 @@ MonoBehaviour:
   sciSlider: {fileID: 694856398}
   morSlider: {fileID: 1692685111}
   envSlider: {fileID: 667529163}
+  timeSlider: {fileID: 1522625270}
   debugText: {fileID: 338257815}
   buildPanel: {fileID: 1268081659}
   upgradePanel: {fileID: 1626509872}

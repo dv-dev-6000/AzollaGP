@@ -91,31 +91,47 @@ public class UpgradeScript : MonoBehaviour
 
     void upgradeMePress()
     {
+        GameManagerScript gms = gameManager.GetComponent<GameManagerScript>();
         int id = gameManager.GetComponent<GameManagerScript>().currPlotSelection;
 
         // check for price
-
-        switch (id)
+        if (TheCloud.settOneMaterials >= int.Parse(matCost.text))
         {
-            case 0:
-                plot0.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
-            case 1:
-                plot1.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
-            case 2:
-                plot2.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
-            case 3:
-                plot3.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
-            case 4:
-                plot4.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
-            case 5:
-                plot5.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
-                break;
+            // update image
+            switch (id)
+            {
+                case 0:
+                    plot0.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+                case 1:
+                    plot1.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+                case 2:
+                    plot2.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+                case 3:
+                    plot3.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+                case 4:
+                    plot4.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+                case 5:
+                    plot5.GetComponent<BuildPlotScript>().upgradeSprite.SetActive(true);
+                    break;
+            }
+
+            // update data
+            if (TheCloud.Plots[id].Level < 2)
+            {
+                TheCloud.Plots[id].Level = 2;
+            }
+
+            // update scores
+            gms.AlterScores(TheCloud.Plots[id].Type, TheCloud.Plots[id].Option, TheCloud.Plots[id].Level, int.Parse(matCost.text), int.Parse(timeCost.text));
+
         }
+
+
         closeMePress();
     }
 
