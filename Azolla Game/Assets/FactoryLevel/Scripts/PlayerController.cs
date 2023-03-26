@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             doubleJump = false;
         }
 
-        // Double jump
+        // Jump
         if (Input.GetButtonDown("Jump"))
         {
             if (coyoteTimeCounter > 0f || doubleJump)
