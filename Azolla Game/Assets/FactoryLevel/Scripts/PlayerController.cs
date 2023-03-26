@@ -1,15 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    Timer timer;
-
+    // Private Fields
     // Move and jump
     private float horizontal;
     private float speed = 5f;
@@ -33,15 +28,11 @@ public class PlayerController : MonoBehaviour
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(4f, 8f);
-    // Coyote time
-    // Can still jump 0.2f after leaving the ground
+    // Coyote time - can still jump 0.2f after leaving the ground
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     // Bounce variable
     private float bounceSpeed = 7f;
-    // Player health
-    public int maxHealth = 50;
-    public int currentHealth;
     // Collectibles
     private int woodCount = 0;
     private int ironCount = 0;
@@ -78,14 +69,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text goldText;
 
     public ParticleSystem dust;
-    public HealthBar healthBar;
     private Animator anim;
+
+    Timer timer;
 
     private void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-
         anim = GetComponent<Animator>();
     }
 
@@ -102,12 +91,7 @@ public class PlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // If 0 health, player dies
-        if (currentHealth == 0)
-        {
-            PlayerDied();
-            bgMusic.Stop();
-        }
+        
 
         // Coyote time counter
         if (IsGrounded())
@@ -170,13 +154,6 @@ public class PlayerController : MonoBehaviour
     {
         AreaManager.instance.GameOver();
         gameObject.SetActive(false);
-    }
-
-    // Reducing player health and setting as its current health
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
     }
 
     private void FixedUpdate()
@@ -296,17 +273,35 @@ public class PlayerController : MonoBehaviour
         dust.Play();
     }
 
-    // Player collision with obsticles
+    // Player collision with obstacles
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("SpikesDanger"))
         {
+            // Knockback effect
             rb.velocity += Vector2.up * bounceSpeed;
-            TakeDamage(10);
+
+            // Reduce Health by 1 and check if hearts are above 0
+            HeartsSystem.life--;
+            if(HeartsSystem.life == 0 )
+            {
+                PlayerDied();
+            }
+            
             damageEffect.Play();
         }
 
+        if  (collision.gameObject.CompareTag("Danger"))
+        {
+            // Reduce Health by 1 and check if hearts are above 0
+            HeartsSystem.life--;
+            if (HeartsSystem.life == 0)
+            {
+                PlayerDied();
+            }
 
+            damageEffect.Play();
+        }
     }
 
     // Player collision with collectibles
@@ -345,7 +340,7 @@ public class PlayerController : MonoBehaviour
             oreCollectEffect.Play();
             Destroy(collision.gameObject);
             copperCount += COPPERVALUE;
-            copperText.text = "Copper " + copperCount;
+            copperText.text = "Copper: " + copperCount;
         }
 
         // Dash Bubble
