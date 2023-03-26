@@ -8,6 +8,10 @@ public class PcScript : MonoBehaviour
     public Sprite OFF;
     public SpriteRenderer ON;
 
+    [SerializeField] private AudioSource powerOFF;
+
+    bool collide = false;
+
     private void Start()
     {
         ON = gameObject.GetComponent<SpriteRenderer>();
@@ -16,8 +20,29 @@ public class PcScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SwapSprite();
+            Debug.Log("Player entered collider");
+
+            collide = true;
         }
+    }
+
+    private void Update()
+    {
+        if(collide)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Button E pressed");
+                powerOFF.Play();
+                SwapSprite();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        collide = false;
+        Debug.Log("Player left the collider");
     }
 
     void SwapSprite()

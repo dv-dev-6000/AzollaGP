@@ -91,8 +91,6 @@ public class PlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        
-
         // Coyote time counter
         if (IsGrounded())
         {
