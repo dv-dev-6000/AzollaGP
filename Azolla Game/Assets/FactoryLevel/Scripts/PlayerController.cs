@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Coyote time - can still jump 0.2f after leaving the ground
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    // Bounce variable
+    // Bounce
     private float bounceSpeed = 7f;
     // Collectibles
     private int woodCount = 0;
@@ -71,25 +71,24 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem dust;
     private Animator anim;
 
-    Timer timer;
-
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Character animation bool
         anim.SetBool("Run", horizontal != 0);
         anim.SetBool("IsGrounded", IsGrounded());
+
+        // Character movement input
+        horizontal = Input.GetAxisRaw("Horizontal");
 
         if (isDashing)
         {
             return;
         }
-
-        horizontal = Input.GetAxisRaw("Horizontal");
 
         // Coyote time counter
         if (IsGrounded())
@@ -146,10 +145,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    // Game Over screen
     private void PlayerDied()
     {
         AreaManager.instance.GameOver();
+        gameObject.SetActive(false);
+    }
+    // Player Win Screen
+    private void PlayerWin()
+    {
+        AreaManager.instance.WinScreen();
         gameObject.SetActive(false);
     }
 
@@ -193,7 +198,6 @@ public class PlayerController : MonoBehaviour
     }
 
     // Wall jump
-    
     private void WallJump()
     {
         if (isWallSliding)
@@ -283,8 +287,8 @@ public class PlayerController : MonoBehaviour
             if(HeartsSystem.life == 0 )
             {
                 PlayerDied();
+                bgMusic.Stop();
             }
-            
             damageEffect.Play();
         }
 
@@ -295,8 +299,8 @@ public class PlayerController : MonoBehaviour
             if (HeartsSystem.life == 0)
             {
                 PlayerDied();
+                bgMusic.Stop();
             }
-
             damageEffect.Play();
         }
     }
@@ -360,5 +364,12 @@ public class PlayerController : MonoBehaviour
         //    Destroy(collision.gameObject);
         //    isWallJumping = true;
         //}
+
+        // Wind Game Trigger
+        if (collision.gameObject.CompareTag("Win"))
+        {
+            PlayerWin();
+            bgMusic.Stop();
+        }
     }
 }

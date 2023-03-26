@@ -32,6 +32,7 @@ TagManager:
   - PC3
   - PC4
   - Danger
+  - Win
   layers:
   - Default
   - TransparentFX

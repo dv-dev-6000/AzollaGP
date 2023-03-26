@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +5,7 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft;
     public bool timeOn = false;
-
     public Text timerTxt;
-    PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +13,7 @@ public class Timer : MonoBehaviour
         timeOn = true;
     }
 
-    // Player dies if time runs out
+    // Player dies if time runs out, get an instance of gameover screen
     private void PlayerDied()
     {
         AreaManager.instance.GameOver();
@@ -29,6 +25,7 @@ public class Timer : MonoBehaviour
     {
         if(timeOn)
         {
+            // Subtract timer from delta time for as long as player has above 0 time left
             if(timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
@@ -41,6 +38,7 @@ public class Timer : MonoBehaviour
                 PlayerDied();
             }
 
+            // Stop the timer once player dies
             if(HeartsSystem.life < 1)
             {
                 timeOn = false;
@@ -52,6 +50,7 @@ public class Timer : MonoBehaviour
     {
         currentTime += 1;
 
+        // Calculating minutes and seconds to appear in the UI
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 

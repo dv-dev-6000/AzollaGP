@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -7,6 +5,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject deathPanel;
     [SerializeField] GameObject winPanel;
 
+    // Toggling win and death panels
     public void ToggleDeathPanel()
     {
         deathPanel.SetActive(!deathPanel.activeSelf);

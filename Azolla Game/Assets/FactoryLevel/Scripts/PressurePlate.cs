@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
@@ -21,6 +19,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Make player a child of a pressure plate
         if (collision.transform.name == "Player")
         {
             collision.transform.parent = transform;
