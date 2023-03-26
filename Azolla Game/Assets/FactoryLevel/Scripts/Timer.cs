@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public bool timeOn = false;
 
     public Text timerTxt;
+    PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,11 @@ public class Timer : MonoBehaviour
                 timeLeft = 0;
                 timeOn = false;
                 PlayerDied();
+            }
+
+            if(HeartsSystem.life < 1)
+            {
+                timeOn = false;
             }
         }
     }

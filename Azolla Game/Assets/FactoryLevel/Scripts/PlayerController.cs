@@ -96,12 +96,10 @@ public class PlayerController : MonoBehaviour
         // Coyote time counter
         if (IsGrounded())
         {
-            //canDash = false;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            //canDash = true;
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -150,6 +148,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
     private void PlayerDied()
     {
         AreaManager.instance.GameOver();

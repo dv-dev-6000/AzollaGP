@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7772724530010566368}
   - component: {fileID: 4200606074814703704}
   - component: {fileID: -4056068481626799809}
+  - component: {fileID: 717874564952063942}
   m_Layer: 3
-  m_Name: PCmad
+  m_Name: PcON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72662354, y: 0.5434685}
   m_EdgeRadius: 0
+--- !u!114 &717874564952063942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226095034320256308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17b11f839430b44fa77a0dc0d45ea73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PC: {fileID: 0}
