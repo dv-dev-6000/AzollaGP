@@ -34,15 +34,15 @@ public class PlayerController : MonoBehaviour
     // Bounce
     private float bounceSpeed = 7f;
     // Collectibles
-    private int woodCount = 0;
-    private int ironCount = 0;
-    private int copperCount = 0;
-    private int goldCount = 0;
+    public int woodCount = 0;
+    public int ironCount = 0;
+    public int copperCount = 0;
+    public int goldCount = 0;
     // Collectible values - CONST
-    private const int WOODVALUE = 3;
-    private const int COPPERVALUE = 5;
-    private const int IRONVALUE = 7;
-    private const int GOLDVALUE = 10;
+    private const int WOODVALUE = 1;
+    private const int COPPERVALUE = 3;
+    private const int IRONVALUE = 2;
+    private const int GOLDVALUE = 5;
 
     // Serialized Fields
     // Rigidbody, ground check/layer
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource damageEffect;
     [SerializeField] private AudioSource dashEffect;
     [SerializeField] private AudioSource powerUpEffect;
-    // UI labels for collectibles
+    // UI labels
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
     [SerializeField] private Text copperText;
@@ -351,21 +351,8 @@ public class PlayerController : MonoBehaviour
             canDash = true;
             powerUpEffect.Play();
         }
-        // Double Jump Bubble
-        if (collision.gameObject.CompareTag("Djump Bubble"))
-        {
-            Destroy(collision.gameObject);
-            doubleJump = true;
-            powerUpEffect.Play();
-        }
-        //// Wall Jump Bubble
-        //if (collision.gameObject.CompareTag("Wjump Bubble"))
-        //{
-        //    Destroy(collision.gameObject);
-        //    isWallJumping = true;
-        //}
 
-        // Wind Game Trigger
+        // Win Game Trigger
         if (collision.gameObject.CompareTag("Win"))
         {
             PlayerWin();

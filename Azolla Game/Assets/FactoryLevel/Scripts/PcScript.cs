@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PcScript : MonoBehaviour
@@ -9,12 +8,15 @@ public class PcScript : MonoBehaviour
     public SpriteRenderer ON;
 
     [SerializeField] private AudioSource powerOFF;
+    [SerializeField] private Text PCcounter;
 
+    private int pcCount = 10;
     bool collide = false;
 
     private void Start()
     {
         ON = gameObject.GetComponent<SpriteRenderer>();
+        PCcounter.text = "- " + pcCount;
     }
 
     // Enable trigger so it could be used in the update
@@ -35,6 +37,9 @@ public class PcScript : MonoBehaviour
             {
                 powerOFF.Play();
                 SwapSprite();
+                pcCount--;
+
+                PCcounter.text = "- " + pcCount;
             }
         }
     }

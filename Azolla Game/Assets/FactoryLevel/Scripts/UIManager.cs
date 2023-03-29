@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    PlayerController playerController;
+
     [SerializeField] GameObject deathPanel;
     [SerializeField] GameObject winPanel;
 
