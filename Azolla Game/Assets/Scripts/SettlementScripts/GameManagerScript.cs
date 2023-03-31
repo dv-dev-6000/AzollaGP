@@ -17,16 +17,16 @@ public class GameManagerScript : MonoBehaviour
     #region Resource Values
     // science variables
     private const int scienceMax = 100;
-    private int scienceMin;
-    public int ScienceScore { get; set; }
+    //private int scienceMin;
+    //public int ScienceScore { get; set; }
     // morale variables
     private const int moraleMax = 100;
-    private int moraleMin;
-    public int MoraleScore { get; set; }
+    //private int moraleMin;
+    //public int MoraleScore { get; set; }
     // environment variables
     private const int environmentMax = 100;
-    private int environmentMin;
-    public int EnvironmentScore { get; set; }
+    //private int environmentMin;
+    //public int EnvironmentScore { get; set; }
 
     // resource bars
     [SerializeField]
@@ -36,12 +36,15 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     private Slider envSlider;
 
+    [SerializeField]
+    private Slider timeSlider;
+
 
     #endregion
 
 
     // players materials cache
-    private int materialsCount;
+    //private int materialsCount;
     // materials prize amount
     private int matPrize = 75;
 
@@ -53,6 +56,8 @@ public class GameManagerScript : MonoBehaviour
     private RectTransform buildPanel;
     [SerializeField]
     private RectTransform upgradePanel;
+    [SerializeField]
+    private RectTransform campPanel;
     // Materials Button
     [SerializeField]
     private Button matButton;
@@ -67,17 +72,16 @@ public class GameManagerScript : MonoBehaviour
         // Set Cursor Visibility
         Cursor.visible = true;
 
-        // set initial min values for main scores
-        scienceMin = TheCloud.minScience;
-        ScienceScore = TheCloud.scienceScore;
-        moraleMin = TheCloud.minMorale;
-        MoraleScore = TheCloud.moraleScore;
-        environmentMin = TheCloud.minEnvironment;
-        EnvironmentScore = TheCloud.environmentScore;
+        // set initial cloud values
+        TheCloud.scienceConv = 1;
+        TheCloud.moraleConv = 1;
+        TheCloud.environmentConv = 1;
 
+        TheCloud.goldValue = 1;
+        TheCloud.ironValue = 1;
+        TheCloud.copperValue = 1;
 
-        // Set initial material amount
-        materialsCount = TheCloud.settOneMaterials;
+        timeSlider.value = timeSlider.maxValue;
 
         // Set Up material Button Click Event
         Button matButt = matButton.GetComponent<Button>();
@@ -87,12 +91,10 @@ public class GameManagerScript : MonoBehaviour
         Button bckButt = backButton.GetComponent<Button>();
         bckButt.onClick.AddListener(BackToShip);
 
-        //debugText.GetComponent<TextMeshProUGUI>();
-
         // set up sliders 
-        sciSlider.GetComponent<Slider>();
-        morSlider.GetComponent<Slider>();
-        envSlider.GetComponent<Slider>();
+        //sciSlider.GetComponent<Slider>();
+        //morSlider.GetComponent<Slider>();
+        //envSlider.GetComponent<Slider>();
 
         UpdateScoreValues();
     }
@@ -103,64 +105,176 @@ public class GameManagerScript : MonoBehaviour
         
     }
 
-    void UpdateScoreValues()
+    public void UpdateScoreValues()
     {
         // update security bar
-        if (ScienceScore < scienceMin)
+        if (TheCloud.scienceScore < TheCloud.minScience)
         {
-            ScienceScore = scienceMin;
+            TheCloud.scienceScore = TheCloud.minScience;
         }
-        else if (ScienceScore > scienceMax)
+        else if (TheCloud.scienceScore > scienceMax)
         {
-            ScienceScore = scienceMax;
+            TheCloud.scienceScore = scienceMax;
         }
-        sciSlider.value = ScienceScore;
+        sciSlider.value = TheCloud.scienceScore;
 
         // update morale bar
-        if (MoraleScore < moraleMin)
+        if (TheCloud.moraleScore < TheCloud.minMorale)
         {
-            MoraleScore = moraleMin;
+            TheCloud.moraleScore = TheCloud.minMorale;
         }
-        else if (MoraleScore > moraleMax)
+        else if (TheCloud.moraleScore > moraleMax)
         {
-            MoraleScore = moraleMax;
+            TheCloud.moraleScore = moraleMax;
         }
-        morSlider.value = MoraleScore;
+        morSlider.value = TheCloud.moraleScore;
 
         // update security bar
-        if (EnvironmentScore < environmentMin)
+        if (TheCloud.environmentScore < TheCloud.minEnvironment)
         {
-            EnvironmentScore = environmentMin;
+            TheCloud.environmentScore = TheCloud.minEnvironment;
         }
-        else if (EnvironmentScore > environmentMax)
+        else if (TheCloud.environmentScore > environmentMax)
         {
-            EnvironmentScore = environmentMax;
+            TheCloud.environmentScore = environmentMax;
         }
-        envSlider.value = EnvironmentScore;
+        envSlider.value = TheCloud.environmentScore;
 
         // update matrerials
-        matDisplayText.GetComponent<TextMeshProUGUI>().text = "" + materialsCount;
+        matDisplayText.GetComponent<TextMeshProUGUI>().text = "" + TheCloud.settOneMaterials;
     }
     
-    public void AlterScores(string targetScore, int changeValue, int minValue = 0)
+    public void AlterScores(string type, int option, int level, int matcost, int timecost)
     {
-        switch (targetScore)
+        // change parameters to type/ option/ level
+        switch (type)
         {
             case "sec":
-                ScienceScore += changeValue;
-                scienceMin = minValue;
+                if (option == 1)        // if option one, increase score and set new min
+                {
+                    if (level == 1) 
+                    {
+                        TheCloud.scienceScore += 25;
+                        TheCloud.minScience = 25;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.scienceScore += 25;
+                        TheCloud.minScience = 50;
+                    }
+                }
+                else if (option == 2)   // if option two, increase conversion ratio
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.scienceConv = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.scienceConv = 3;
+                    }
+                }
+                else if (option == 3)   // if option three, increse collectible value
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.ironValue = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.ironValue = 3;
+                    }
+                }
                 break;
+
             case "mor":
-                MoraleScore += changeValue;
-                moraleMin = minValue;
+                if (option == 1)        // if option one, increase score and set new min
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.moraleScore += 25;
+                        TheCloud.minMorale = 25;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.moraleScore += 25;
+                        TheCloud.minMorale = 50;
+                    }
+                }
+                else if (option == 2)   // if option two, increase conversion ratio
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.moraleConv = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.moraleConv = 3;
+                    }
+                }
+                else if (option == 3)   // if option three, increse collectible value
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.copperValue = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.copperValue = 3;
+                    }
+                }
                 break;
+
             case "env":
-                EnvironmentScore += changeValue;
-                environmentMin = minValue;
+                if (option == 1)        // if option one, increase score and set new min
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.environmentScore += 25;
+                        TheCloud.minEnvironment = 25;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.environmentScore += 25;
+                        TheCloud.minEnvironment = 50;
+                    }
+                }
+                else if (option == 2)   // if option two, increase conversion ratio
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.environmentConv = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.environmentConv = 3;
+                    }
+                }
+                else if (option == 3)   // if option three, increse collectible value
+                {
+                    if (level == 1)
+                    {
+                        TheCloud.goldValue = 2;
+                    }
+                    else if (level == 2)
+                    {
+                        TheCloud.goldValue = 3;
+                    }
+                }
                 break;
         }
 
-        
+        // reduce materials
+        TheCloud.settOneMaterials -= matcost;
+
+        // reduce time
+        timeSlider.value -= timecost;
+
+        // debug text
+        debugText.text = "sciMin=" + TheCloud.minScience + " sciCon=" + TheCloud.scienceConv +
+                         " morMin=" + TheCloud.minMorale + " morCon=" + TheCloud.moraleConv +
+                         " envMin=" + TheCloud.minEnvironment + " envCon=" + TheCloud.environmentConv +
+                         " iron="+ TheCloud.ironValue + " copper=" + TheCloud.copperValue + " gold=" + TheCloud.goldValue;
 
         UpdateScoreValues();
     }
@@ -174,7 +288,6 @@ public class GameManagerScript : MonoBehaviour
         {
             buildPanel.gameObject.SetActive(true);
             TheCloud.uiMenuOpen = true;
-            //debugText.text = "" + currPlotSelection;
         }
         else
         {
@@ -197,9 +310,18 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
+    public void OpenCampMenu()
+    {
+        if (campPanel.gameObject.activeInHierarchy == false)
+        {
+            campPanel.gameObject.SetActive(true);
+            TheCloud.uiMenuOpen = true;
+        }
+    }
+
     void AddMaterials()
     {
-        materialsCount = materialsCount + matPrize;
+        TheCloud.settOneMaterials += matPrize;
         //ScienceScore += 25;
         //EnvironmentScore += 10;
         //MoraleScore += 15;
@@ -208,16 +330,6 @@ public class GameManagerScript : MonoBehaviour
 
     void BackToShip()
     {
-        // store level info in cloud
-        TheCloud.minScience = scienceMin;
-        TheCloud.scienceScore = ScienceScore;
-        TheCloud.minMorale = moraleMin;
-        TheCloud.moraleScore = MoraleScore;
-        TheCloud.minEnvironment = environmentMin;
-        TheCloud.environmentScore = EnvironmentScore;
-
-        TheCloud.settOneMaterials = materialsCount;
-
         // load ship scene
         SceneManager.LoadScene(0);
     }
