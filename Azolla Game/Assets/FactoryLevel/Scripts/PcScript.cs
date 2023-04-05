@@ -8,15 +8,15 @@ public class PcScript : MonoBehaviour
     public SpriteRenderer ON;
 
     [SerializeField] private AudioSource powerOFF;
-    //[SerializeField] private Text PCcounter;
+    [SerializeField] private Text PCcounter;
 
-    //private int pcCount = 10;
+    private int pcCount = 10;
     bool collide = false;
 
     private void Start()
     {
         ON = gameObject.GetComponent<SpriteRenderer>();
-        //PCcounter.text = "- " + pcCount;
+        PCcounter.text = "- " + pcCount;
     }
 
     // Enable trigger so it could be used in the update
@@ -37,9 +37,9 @@ public class PcScript : MonoBehaviour
             {
                 powerOFF.Play();
                 SwapSprite();
-                //pcCount--;
+                pcCount--;
 
-               // PCcounter.text = "- " + pcCount;
+                PCcounter.text = "- " + pcCount;
             }
         }
     }

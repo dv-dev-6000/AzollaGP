@@ -39,10 +39,10 @@ public class PlayerController : MonoBehaviour
     public int copperCount = 0;
     public int goldCount = 0;
     // Collectible values - CONST
-    private const int WOODVALUE = 1;
-    private const int COPPERVALUE = 3;
-    private const int IRONVALUE = 2;
-    private const int GOLDVALUE = 5;
+    private const int WOODVALUE = 2;
+    private const int COPPERVALUE = 6;
+    private const int IRONVALUE = 4;
+    private const int GOLDVALUE = 8;
 
     // Serialized Fields
     // Rigidbody, ground check/layer
@@ -68,11 +68,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text copperText;
     [SerializeField] private Text goldText;
 
+    private WinPanel winPanel;
+    private LosePanel losePanel;
+    public GameObject winLosePanels;
     public ParticleSystem dust;
     private Animator anim;
+    private Timer timer;
 
     private void Start()
     {
+        timer = FindObjectOfType<Timer>();
+        winPanel = FindAnyObjectByType<WinPanel>();
+        losePanel = FindObjectOfType<LosePanel>();
         anim = GetComponent<Animator>();
     }
 
@@ -146,16 +153,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Game Over screen
-    private void PlayerDied()
+    public void PlayerDied()
     {
         AreaManager.instance.GameOver();
         gameObject.SetActive(false);
+        losePanel.Lose();
     }
     // Player Win Screen
-    private void PlayerWin()
+    public void PlayerWin()
     {
         AreaManager.instance.WinScreen();
         gameObject.SetActive(false);
+        winPanel.Win();
+        timer.timeOn = false;
     }
 
     private void FixedUpdate()
@@ -359,4 +369,6 @@ public class PlayerController : MonoBehaviour
             bgMusic.Stop();
         }
     }
+
+    
 }
