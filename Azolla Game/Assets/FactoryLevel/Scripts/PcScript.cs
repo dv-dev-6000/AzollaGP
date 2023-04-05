@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PcScript : MonoBehaviour
 {
-    PlayerController playerController;
-
     public GameObject PC;
     public Sprite OFF;
     public SpriteRenderer ON;
@@ -18,7 +16,6 @@ public class PcScript : MonoBehaviour
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
         ON = gameObject.GetComponent<SpriteRenderer>();
 
         PCcounter.text = "- " + pcCountLvl1;

@@ -5,6 +5,7 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft;
     public bool timeOn = false;
+
     public Text timerTxt;
 
     // Start is called before the first frame update

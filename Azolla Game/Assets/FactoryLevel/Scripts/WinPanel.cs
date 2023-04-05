@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class WinPanel : MonoBehaviour
 {
+    [Header ("Resources Txt")]
     [SerializeField] private Text woodCount;
     [SerializeField] private Text ironCount;
     [SerializeField] private Text goldCount;
     [SerializeField] private Text copperCount;
 
+    [Header ("Player Controller")]
     public PlayerController playerController;
 
     private void Start()

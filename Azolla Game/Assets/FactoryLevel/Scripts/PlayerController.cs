@@ -44,19 +44,26 @@ public class PlayerController : MonoBehaviour
     private const int IRONVALUE = 4;
     private const int GOLDVALUE = 8;
 
-    public int pcCount = 10;
+    // Classes
+    private WinPanel winPanel;
+    private LosePanel losePanel;
+    private Animator anim;
+    private Timer timer;
 
     // Serialized Fields
-    // Rigidbody, ground check/layer
+    [Header ("Rigidbody, ground check/layer")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    // Trail effect
+
+    [Header ("Trail effect")]
     [SerializeField] private TrailRenderer tr;
-    // Wall checks
+
+    [Header ("Wall checks")]
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    // Audio sources
+
+    [Header ("Audio sources")]
     [SerializeField] private AudioSource bgMusic;
     [SerializeField] private AudioSource jumpEffect;
     [SerializeField] private AudioSource oreCollectEffect;
@@ -64,18 +71,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource damageEffect;
     [SerializeField] private AudioSource dashEffect;
     [SerializeField] private AudioSource powerUpEffect;
-    // UI labels
+
+    [Header ("UI")]
     [SerializeField] private Text woodText;
     [SerializeField] private Text ironText;
     [SerializeField] private Text copperText;
     [SerializeField] private Text goldText;
 
-    private WinPanel winPanel;
-    private LosePanel losePanel;
+    [Header ("win-lose-panel")]
     public GameObject winLosePanels;
+
+    [Header ("Dust particle")]
     public ParticleSystem dust;
-    private Animator anim;
-    private Timer timer;
 
     private void Start()
     {

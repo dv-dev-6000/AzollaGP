@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class LosePanel : MonoBehaviour
 {
+    [Header ("Player Controller")]
     public PlayerController playerController;
 
+    [Header ("Resources")]
     [SerializeField] private Text woodCount;
     [SerializeField] private Text ironCount;
     [SerializeField] private Text goldCount;
@@ -17,7 +19,6 @@ public class LosePanel : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
     }
-
 
     public void Lose()
     {

@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    PlayerController playerController;
-
+    [Header ("Win/Lose panels")]
     [SerializeField] GameObject deathPanel;
     [SerializeField] GameObject winPanel;
 
