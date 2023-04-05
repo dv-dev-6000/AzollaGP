@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PcScript : MonoBehaviour
 {
+    PlayerController playerController;
+
     public GameObject PC;
     public Sprite OFF;
     public SpriteRenderer ON;
@@ -10,13 +12,16 @@ public class PcScript : MonoBehaviour
     [SerializeField] private AudioSource powerOFF;
     [SerializeField] private Text PCcounter;
 
-    private int pcCount = 10;
     bool collide = false;
+    int wasPressed = 0;
+    int pcCountLvl1 = 1;
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         ON = gameObject.GetComponent<SpriteRenderer>();
-        PCcounter.text = "- " + pcCount;
+
+        PCcounter.text = "- " + pcCountLvl1;
     }
 
     // Enable trigger so it could be used in the update
@@ -33,13 +38,15 @@ public class PcScript : MonoBehaviour
     {
         if(collide)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && wasPressed < 1)
             {
-                powerOFF.Play();
-                SwapSprite();
-                pcCount--;
+                    powerOFF.Play();
+                    SwapSprite();
+                pcCountLvl1--;
 
-                PCcounter.text = "- " + pcCount;
+                    PCcounter.text = "- " + pcCountLvl1.ToString();
+                    collide = false;
+                    wasPressed++;
             }
         }
     }

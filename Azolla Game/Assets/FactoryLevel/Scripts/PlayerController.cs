@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     private const int IRONVALUE = 4;
     private const int GOLDVALUE = 8;
 
+    public int pcCount = 10;
+
     // Serialized Fields
     // Rigidbody, ground check/layer
     [SerializeField] private Rigidbody2D rb;

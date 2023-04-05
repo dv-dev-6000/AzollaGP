@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4139814938191374420}
   m_Layer: 3
   m_Name: PcON
-  m_TagString: Untagged
+  m_TagString: PCs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   OFF: {fileID: 0}
   ON: {fileID: 0}
   powerOFF: {fileID: 0}
+  PCcounter: {fileID: 0}
 --- !u!82 &-4139814938191374420
 AudioSource:
   m_ObjectHideFlags: 0
