@@ -44,6 +44,14 @@ namespace Assets.Scripts
         public static int ironValue { get; set; }
         public static int copperValue { get; set; }
 
+        // play against timer
+        public static bool playTimed { get; set; }
+        // the prize in materials for completing a level
+        public static int levelPrize { get; set; }
+        // the total materials to collected in a level
+        public static int matsCollected { get; set; }
+        // marks when player has just returned from platforming
+        public static bool returnedFromPlatformer { get; set; }
 
         public static Plot[] Plots { get; set; } = {new Plot(), new Plot(), new Plot(), new Plot(), new Plot(), new Plot() };
 

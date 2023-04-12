@@ -12,6 +12,9 @@ public class CampMenuScript : MonoBehaviour
     GameObject gameManager;
     GameManagerScript gms;
 
+    [SerializeField]
+    private RectTransform embarkPanel;
+
     #region Buttons
     [SerializeField]
     private Button close;
@@ -22,6 +25,12 @@ public class CampMenuScript : MonoBehaviour
     private Button convertMor;
     [SerializeField]
     private Button convertEnv;
+
+    [SerializeField]
+    private Button embarkOne;
+    [SerializeField]
+    private Button embarkTwo;
+
     #endregion
 
 
@@ -39,6 +48,12 @@ public class CampMenuScript : MonoBehaviour
 
         Button convEnv = convertEnv.GetComponent<Button>();
         convEnv.onClick.AddListener(ConvertEnvPress);
+
+        Button levelOne = embarkOne.GetComponent<Button>();
+        embarkOne.onClick.AddListener(EmbarkOnePress);
+
+        Button levelTwo = embarkTwo.GetComponent<Button>();
+        embarkTwo.onClick.AddListener(EmbarkTwoPress);
 
         gms = gameManager.GetComponent<GameManagerScript>();
     }
@@ -86,6 +101,30 @@ public class CampMenuScript : MonoBehaviour
 
             gms.UpdateScoreValues();
         }
+    }
+
+    private void EmbarkOnePress()
+    {
+        // if more than one level add level flag to cloud
+
+        // update prize in cloud
+        TheCloud.levelPrize = 100;
+        // close menu
+        this.gameObject.SetActive(false);
+        // open embark menu
+        embarkPanel.gameObject.SetActive(true);
+    }
+
+    private void EmbarkTwoPress()
+    {
+        // if more than one level add level flag to cloud
+
+        // update prize in cloud
+        TheCloud.levelPrize = 100;
+        // close menu
+        this.gameObject.SetActive(false);
+        // open embark menu
+        embarkPanel.gameObject.SetActive(true);
     }
 
 }

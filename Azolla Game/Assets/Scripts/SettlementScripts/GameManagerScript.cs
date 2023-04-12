@@ -58,6 +58,8 @@ public class GameManagerScript : MonoBehaviour
     private RectTransform upgradePanel;
     [SerializeField]
     private RectTransform campPanel;
+    [SerializeField]
+    private RectTransform embarkPanel;
     // Materials Button
     [SerializeField]
     private Button matButton;
@@ -80,6 +82,11 @@ public class GameManagerScript : MonoBehaviour
         TheCloud.goldValue = 1;
         TheCloud.ironValue = 1;
         TheCloud.copperValue = 1;
+
+        TheCloud.levelPrize = 0;
+        TheCloud.matsCollected = 0;
+        TheCloud.playTimed = false;
+        TheCloud.returnedFromPlatformer = false;
 
         timeSlider.value = timeSlider.maxValue;
 
