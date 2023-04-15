@@ -23,6 +23,11 @@ namespace Assets.Scripts
 
     public static class TheCloud
     {
+        // check var init
+        public static bool varsInitialised { get; set; }
+        // trigger the event menu
+        public static bool triggerEvent { get; set; }
+
         // Static Variables
         public static bool uiMenuOpen { get; set; }             // is a UI menu currently open
         public static int credits { get; set; }                 // total credits
