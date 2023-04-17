@@ -58,6 +58,8 @@ namespace Assets.Scripts
         // marks when player has just returned from platforming
         public static bool returnedFromPlatformer { get; set; }
 
+        public static bool disableStarScroll { get; set; }
+
         public static Plot[] Plots { get; set; } = {new Plot(), new Plot(), new Plot(), new Plot(), new Plot(), new Plot() };
 
     }

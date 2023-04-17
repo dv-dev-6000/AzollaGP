@@ -5,9 +5,12 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CampMenuScript : MonoBehaviour
 {
+    private int sceneToLoad;
+
     [SerializeField]
     GameObject gameManager;
     GameManagerScript gms;
@@ -129,6 +132,8 @@ public class CampMenuScript : MonoBehaviour
         this.gameObject.SetActive(false);
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
+
+        sceneToLoad = 2;
     }
 
     private void EmbarkTwoPress()
@@ -141,6 +146,8 @@ public class CampMenuScript : MonoBehaviour
         this.gameObject.SetActive(false);
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
+
+        sceneToLoad = 2;
     }
 
     private void timerButPress()
@@ -152,6 +159,7 @@ public class CampMenuScript : MonoBehaviour
         embarkPanel.gameObject.SetActive(false); // ** replace line with level load
         TheCloud.uiMenuOpen = false;
 
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private void noTimerButPress()
@@ -162,6 +170,8 @@ public class CampMenuScript : MonoBehaviour
         // load level
         embarkPanel.gameObject.SetActive(false); // ** replace line with level load
         TheCloud.uiMenuOpen = false;
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private void embarkClosePress()

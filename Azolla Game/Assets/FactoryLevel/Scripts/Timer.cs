@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts;
 
 public class Timer : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeOn = true;
+        timeOn = TheCloud.playTimed;
     }
 
     // Player dies if time runs out, get an instance of gameover screen

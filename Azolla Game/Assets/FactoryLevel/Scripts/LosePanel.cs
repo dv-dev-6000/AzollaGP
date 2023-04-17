@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts;
 
 public class LosePanel : MonoBehaviour
 {
@@ -26,5 +27,9 @@ public class LosePanel : MonoBehaviour
         ironCount.text = "Iron: " + playerController.ironCount / 2;
         goldCount.text = "Gold: " + playerController.goldCount / 2;
         copperCount.text = "Copper: " + playerController.copperCount / 2;
+
+        TheCloud.matsCollected = (playerController.woodCount + playerController.ironCount + playerController.goldCount + playerController.copperCount)/2;
+        TheCloud.returnedFromPlatformer = true;
+        TheCloud.levelPrize = 0;
     }
 }

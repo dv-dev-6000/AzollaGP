@@ -94,6 +94,8 @@ public class GameManagerScript : MonoBehaviour
             TheCloud.settOneTimeBar = (int)timeSlider.maxValue;
 
             TheCloud.varsInitialised = true;
+
+            TheCloud.disableStarScroll = true;
         }
         
         // Set Up material Button Click Event
@@ -103,6 +105,12 @@ public class GameManagerScript : MonoBehaviour
         // back button
         Button bckButt = backButton.GetComponent<Button>();
         bckButt.onClick.AddListener(BackToShip);
+
+        if (TheCloud.returnedFromPlatformer)
+        {
+            TheCloud.settOneMaterials = TheCloud.matsCollected + TheCloud.levelPrize;
+            TheCloud.returnedFromPlatformer = false;
+        }
 
         UpdateScoreValues();
         updateConvValueText();

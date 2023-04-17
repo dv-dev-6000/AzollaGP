@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts;
 
 public class WinPanel : MonoBehaviour
 {
@@ -25,5 +26,8 @@ public class WinPanel : MonoBehaviour
         ironCount.text = "Iron: " + playerController.ironCount;
         goldCount.text = "Gold: " + playerController.goldCount;
         copperCount.text = "Copper: " + playerController.copperCount;
+
+        TheCloud.matsCollected = playerController.woodCount + playerController.ironCount + playerController.goldCount + playerController.copperCount;
+        TheCloud.returnedFromPlatformer = true;
     }
 }
