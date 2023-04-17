@@ -3783,8 +3783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.4493, y: 38.266907}
-  m_SizeDelta: {x: 135, y: 110}
+  m_AnchoredPosition: {x: 1, y: 38.266907}
+  m_SizeDelta: {x: 120.4314, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283408690
 MonoBehaviour:
@@ -3806,7 +3806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 399b98f2729b70148938b1437d246202, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4441,7 +4441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &338257814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6585,7 +6585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_text
-      value: Morale
+      value: Social
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_fontSize
@@ -9097,7 +9097,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 699323167}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -9200,7 +9200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Science
+  m_text: Culture
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30edf8a38880f445989a33140db3de0, type: 2}
   m_sharedMaterial: {fileID: -601176178999585053, guid: d30edf8a38880f445989a33140db3de0, type: 2}
@@ -14177,7 +14177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_text
-      value: Science
+      value: Culture
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_fontSize
@@ -14642,7 +14642,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1143200507}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -15299,7 +15299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ecd9d8703fd65a24b96e8f2c48d6f45d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16549,7 +16549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Environment
+  m_text: Sustainability
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30edf8a38880f445989a33140db3de0, type: 2}
   m_sharedMaterial: {fileID: -601176178999585053, guid: d30edf8a38880f445989a33140db3de0, type: 2}
@@ -18773,7 +18773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ecd9d8703fd65a24b96e8f2c48d6f45d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21186,7 +21186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Morale
+  m_text: Social
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30edf8a38880f445989a33140db3de0, type: 2}
   m_sharedMaterial: {fileID: -601176178999585053, guid: d30edf8a38880f445989a33140db3de0, type: 2}
@@ -21984,9 +21984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back To Ship
-
-'
+  m_text: "Back \nTo \nShip\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30edf8a38880f445989a33140db3de0, type: 2}
   m_sharedMaterial: {fileID: -601176178999585053, guid: d30edf8a38880f445989a33140db3de0, type: 2}
@@ -22828,7 +22826,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1723749397}
   m_HandleRect: {fileID: 1723749396}
   m_Direction: 0
-  m_Value: 0
+  m_Value: -0.00000012011279
   m_Size: 0.57618487
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -24041,7 +24039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ecd9d8703fd65a24b96e8f2c48d6f45d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24296,6 +24294,9 @@ MonoBehaviour:
   convertEnv: {fileID: 143086011}
   embarkOne: {fileID: 1576195349}
   embarkTwo: {fileID: 1666791260}
+  withTimer: {fileID: 1143200506}
+  noTimer: {fileID: 699323166}
+  embarkClose: {fileID: 365417283}
 --- !u!1 &1968047624
 GameObject:
   m_ObjectHideFlags: 0
@@ -25086,6 +25087,9 @@ MonoBehaviour:
   envSlider: {fileID: 667529163}
   timeSlider: {fileID: 1522625270}
   debugText: {fileID: 338257815}
+  sciRatio: {fileID: 83271711}
+  morRatio: {fileID: 600229196}
+  envRatio: {fileID: 1014352945}
   buildPanel: {fileID: 1268081659}
   upgradePanel: {fileID: 1626509872}
   campPanel: {fileID: 1963252770}
@@ -26165,7 +26169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ecd9d8703fd65a24b96e8f2c48d6f45d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26394,8 +26398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.4493, y: 38.266907}
-  m_SizeDelta: {x: 135, y: 110}
+  m_AnchoredPosition: {x: 3, y: 38.266907}
+  m_SizeDelta: {x: 120.4314, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118067228
 MonoBehaviour:
@@ -26417,7 +26421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 399b98f2729b70148938b1437d246202, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26774,7 +26778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_text
-      value: Environment
+      value: Sustainability
       objectReference: {fileID: 0}
     - target: {fileID: 4525682254090279071, guid: 9fc3d07084bd81d42963db98bcaa8376, type: 3}
       propertyPath: m_fontSize

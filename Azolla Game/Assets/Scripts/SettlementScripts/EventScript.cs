@@ -188,7 +188,7 @@ public class EventScript : MonoBehaviour
                 case 1:
                     // dissapate 
                     resultInfo.text = "The chemical gets to work in the atmosphere, before the day is over the weather dissipates into no more than a light rain. " +
-                        "Environmental scientists report that atmospheric toxicity levels have increased in the region as a result. \n\nEnvironment score reduced!!";
+                        "Environmental scientists report that atmospheric toxicity levels have increased in the region as a result. \n\nSustainability score reduced!!";
                     TheCloud.environmentScore -= 20;
                     break;
 

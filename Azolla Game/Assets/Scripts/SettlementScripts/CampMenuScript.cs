@@ -31,6 +31,13 @@ public class CampMenuScript : MonoBehaviour
     [SerializeField]
     private Button embarkTwo;
 
+    [SerializeField]
+    private Button withTimer;
+    [SerializeField]
+    private Button noTimer;
+    [SerializeField]
+    private Button embarkClose;
+
     #endregion
 
 
@@ -54,6 +61,15 @@ public class CampMenuScript : MonoBehaviour
 
         Button levelTwo = embarkTwo.GetComponent<Button>();
         embarkTwo.onClick.AddListener(EmbarkTwoPress);
+
+        Button timerBut = withTimer.GetComponent<Button>();
+        withTimer.onClick.AddListener(timerButPress);
+
+        Button noTimerBut = noTimer.GetComponent<Button>();
+        noTimer.onClick.AddListener(noTimerButPress);
+
+        Button closeEmbark = embarkClose.GetComponent<Button>();
+        embarkClose.onClick.AddListener(embarkClosePress);
 
         gms = gameManager.GetComponent<GameManagerScript>();
     }
@@ -120,11 +136,37 @@ public class CampMenuScript : MonoBehaviour
         // if more than one level add level flag to cloud
 
         // update prize in cloud
-        TheCloud.levelPrize = 100;
+        TheCloud.levelPrize = 200;
         // close menu
         this.gameObject.SetActive(false);
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
     }
 
+    private void timerButPress()
+    {
+        // set timer bool in cloud
+        TheCloud.playTimed = true;
+
+        // load level 
+        embarkPanel.gameObject.SetActive(false); // ** replace line with level load
+        TheCloud.uiMenuOpen = false;
+
+    }
+
+    private void noTimerButPress()
+    {
+        // set timer boolk in cloud
+        TheCloud.playTimed = false;
+
+        // load level
+        embarkPanel.gameObject.SetActive(false); // ** replace line with level load
+        TheCloud.uiMenuOpen = false;
+    }
+
+    private void embarkClosePress()
+    {
+        embarkPanel.gameObject.SetActive(false);
+        TheCloud.uiMenuOpen = false;
+    }
 }

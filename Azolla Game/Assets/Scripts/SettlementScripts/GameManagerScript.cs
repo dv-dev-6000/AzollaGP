@@ -37,10 +37,18 @@ public class GameManagerScript : MonoBehaviour
     #endregion
 
     // materials prize amount
-    private int matPrize = 75;
+    private int matPrize = 250;
 
     [SerializeField]
     public TextMeshProUGUI debugText;
+
+    // conversion rations text
+    [SerializeField]
+    private TextMeshProUGUI sciRatio;
+    [SerializeField]
+    private TextMeshProUGUI morRatio;
+    [SerializeField]
+    private TextMeshProUGUI envRatio;
 
     // Build/Upgrade Panel Menu
     [SerializeField]
@@ -97,6 +105,7 @@ public class GameManagerScript : MonoBehaviour
         bckButt.onClick.AddListener(BackToShip);
 
         UpdateScoreValues();
+        updateConvValueText();
     }
 
     // Update is called once per frame
@@ -115,6 +124,36 @@ public class GameManagerScript : MonoBehaviour
         {
             TheCloud.triggerEvent = true;
             eventPanel.GetComponent<EventScript>().updateEvent(Random.Range(0, 5));
+        }
+    }
+
+    private void updateConvValueText()
+    {
+        if (TheCloud.scienceConv == 2)
+        {
+            sciRatio.text = "1 material = 2 points";
+        }
+        else if(TheCloud.scienceConv == 3)
+        {
+            sciRatio.text = "1 material = 3 points";
+        }
+
+        if (TheCloud.moraleConv == 2)
+        {
+            morRatio.text = "1 material = 2 points";
+        }
+        else if (TheCloud.moraleConv == 3)
+        {
+            morRatio.text = "1 material = 3 points";
+        }
+
+        if (TheCloud.environmentConv == 2)
+        {
+            envRatio.text = "1 material = 2 points";
+        }
+        else if (TheCloud.environmentConv == 3)
+        {
+            envRatio.text = "1 material = 3 points";
         }
     }
 
@@ -296,7 +335,7 @@ public class GameManagerScript : MonoBehaviour
                          " iron="+ TheCloud.ironValue + " copper=" + TheCloud.copperValue + " gold=" + TheCloud.goldValue;
 
         UpdateScoreValues();
-
+        updateConvValueText();
         checkForEvent();
     }
 
