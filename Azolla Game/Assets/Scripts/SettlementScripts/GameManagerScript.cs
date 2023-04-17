@@ -9,24 +9,18 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     public int currPlotSelection { get; set; }
-    
+
     // back to ship Button
     [SerializeField]
     private Button backButton;
 
     #region Resource Values
-    // science variables
+    // science variable
     private const int scienceMax = 100;
-    //private int scienceMin;
-    //public int ScienceScore { get; set; }
-    // morale variables
+    // morale variable
     private const int moraleMax = 100;
-    //private int moraleMin;
-    //public int MoraleScore { get; set; }
-    // environment variables
+    // environment variable
     private const int environmentMax = 100;
-    //private int environmentMin;
-    //public int EnvironmentScore { get; set; }
 
     // resource bars
     [SerializeField]
@@ -42,14 +36,19 @@ public class GameManagerScript : MonoBehaviour
 
     #endregion
 
-
-    // players materials cache
-    //private int materialsCount;
     // materials prize amount
-    private int matPrize = 75;
+    private int matPrize = 250;
 
     [SerializeField]
     public TextMeshProUGUI debugText;
+
+    // conversion rations text
+    [SerializeField]
+    private TextMeshProUGUI sciRatio;
+    [SerializeField]
+    private TextMeshProUGUI morRatio;
+    [SerializeField]
+    private TextMeshProUGUI envRatio;
 
     // Build/Upgrade Panel Menu
     [SerializeField]
@@ -58,6 +57,10 @@ public class GameManagerScript : MonoBehaviour
     private RectTransform upgradePanel;
     [SerializeField]
     private RectTransform campPanel;
+    [SerializeField]
+    private RectTransform embarkPanel;
+    [SerializeField]
+    private RectTransform eventPanel;
     // Materials Button
     [SerializeField]
     private Button matButton;
@@ -73,16 +76,26 @@ public class GameManagerScript : MonoBehaviour
         Cursor.visible = true;
 
         // set initial cloud values
-        TheCloud.scienceConv = 1;
-        TheCloud.moraleConv = 1;
-        TheCloud.environmentConv = 1;
+        if (!TheCloud.varsInitialised)
+        {
+            TheCloud.scienceConv = 1;
+            TheCloud.moraleConv = 1;
+            TheCloud.environmentConv = 1;
 
-        TheCloud.goldValue = 1;
-        TheCloud.ironValue = 1;
-        TheCloud.copperValue = 1;
+            TheCloud.goldValue = 1;
+            TheCloud.ironValue = 1;
+            TheCloud.copperValue = 1;
 
-        timeSlider.value = timeSlider.maxValue;
+            TheCloud.levelPrize = 0;
+            TheCloud.matsCollected = 0;
+            TheCloud.playTimed = false;
+            TheCloud.returnedFromPlatformer = false;
 
+            TheCloud.settOneTimeBar = (int)timeSlider.maxValue;
+
+            TheCloud.varsInitialised = true;
+        }
+        
         // Set Up material Button Click Event
         Button matButt = matButton.GetComponent<Button>();
         matButt.onClick.AddListener(AddMaterials);
@@ -91,18 +104,57 @@ public class GameManagerScript : MonoBehaviour
         Button bckButt = backButton.GetComponent<Button>();
         bckButt.onClick.AddListener(BackToShip);
 
-        // set up sliders 
-        //sciSlider.GetComponent<Slider>();
-        //morSlider.GetComponent<Slider>();
-        //envSlider.GetComponent<Slider>();
-
         UpdateScoreValues();
+        updateConvValueText();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!TheCloud.uiMenuOpen && TheCloud.triggerEvent)
+        {
+            eventPanel.gameObject.SetActive(true);
+            TheCloud.uiMenuOpen = true;
+        }
+    }
+
+    private void checkForEvent()
+    {
+        if (timeSlider.value <= 0)
+        {
+            TheCloud.triggerEvent = true;
+            eventPanel.GetComponent<EventScript>().updateEvent(Random.Range(0, 5));
+        }
+    }
+
+    private void updateConvValueText()
+    {
+        if (TheCloud.scienceConv == 2)
+        {
+            sciRatio.text = "1 material = 2 points";
+        }
+        else if(TheCloud.scienceConv == 3)
+        {
+            sciRatio.text = "1 material = 3 points";
+        }
+
+        if (TheCloud.moraleConv == 2)
+        {
+            morRatio.text = "1 material = 2 points";
+        }
+        else if (TheCloud.moraleConv == 3)
+        {
+            morRatio.text = "1 material = 3 points";
+        }
+
+        if (TheCloud.environmentConv == 2)
+        {
+            envRatio.text = "1 material = 2 points";
+        }
+        else if (TheCloud.environmentConv == 3)
+        {
+            envRatio.text = "1 material = 3 points";
+        }
     }
 
     public void UpdateScoreValues()
@@ -141,7 +193,13 @@ public class GameManagerScript : MonoBehaviour
         envSlider.value = TheCloud.environmentScore;
 
         // update matrerials
+        if (TheCloud.settOneMaterials < 0)
+        {
+            TheCloud.settOneMaterials = 0;
+        }
         matDisplayText.GetComponent<TextMeshProUGUI>().text = "" + TheCloud.settOneMaterials;
+
+        timeSlider.value = TheCloud.settOneTimeBar;
     }
     
     public void AlterScores(string type, int option, int level, int matcost, int timecost)
@@ -268,7 +326,7 @@ public class GameManagerScript : MonoBehaviour
         TheCloud.settOneMaterials -= matcost;
 
         // reduce time
-        timeSlider.value -= timecost;
+        TheCloud.settOneTimeBar -= timecost;
 
         // debug text
         debugText.text = "sciMin=" + TheCloud.minScience + " sciCon=" + TheCloud.scienceConv +
@@ -277,6 +335,8 @@ public class GameManagerScript : MonoBehaviour
                          " iron="+ TheCloud.ironValue + " copper=" + TheCloud.copperValue + " gold=" + TheCloud.goldValue;
 
         UpdateScoreValues();
+        updateConvValueText();
+        checkForEvent();
     }
 
     /// <summary>
@@ -322,10 +382,11 @@ public class GameManagerScript : MonoBehaviour
     void AddMaterials()
     {
         TheCloud.settOneMaterials += matPrize;
-        //ScienceScore += 25;
-        //EnvironmentScore += 10;
-        //MoraleScore += 15;
         UpdateScoreValues();
+
+        //TESTING 
+        TheCloud.triggerEvent = true;
+        eventPanel.GetComponent<EventScript>().updateEvent(Random.Range(0, 5));
     }
 
     void BackToShip()

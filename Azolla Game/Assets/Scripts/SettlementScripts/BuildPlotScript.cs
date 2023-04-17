@@ -64,7 +64,11 @@ public class BuildPlotScript : MonoBehaviour
             }
             else
             {
-                gameManager.GetComponent<GameManagerScript>().OpenUpgradeMenu();
+                if (option != 3 && TheCloud.Plots[id].Level < 2)
+                {
+                    gameManager.GetComponent<GameManagerScript>().OpenUpgradeMenu();
+                }
+                
             }
 
             hovCir.SetActive(false);
