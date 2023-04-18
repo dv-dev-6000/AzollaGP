@@ -12,6 +12,8 @@ public class BuildPlotScript : MonoBehaviour
     GameObject gameManager;
     [SerializeField]
     GameObject spriteManager;
+    [SerializeField]
+    SettlementSoundScript soundMan;
 
     [SerializeField]
     private int id;
@@ -70,7 +72,7 @@ public class BuildPlotScript : MonoBehaviour
                 }
                 
             }
-
+            soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             hovCir.SetActive(false);
         }
     }

@@ -12,6 +12,9 @@ public class EventScript : MonoBehaviour
     [SerializeField]
     private RectTransform resultPanel;
 
+    [SerializeField]
+    SettlementSoundScript soundMan;
+
     GameManagerScript gms;
 
     private float currEvent;
@@ -295,6 +298,8 @@ public class EventScript : MonoBehaviour
         TheCloud.triggerEvent = false;
         TheCloud.settOneTimeBar = 6;
         gms.UpdateScoreValues();
+
+        soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
     }
 
     private void closeMe()
@@ -303,5 +308,7 @@ public class EventScript : MonoBehaviour
         this.gameObject.SetActive(false);
         // open event result window
         resultPanel.gameObject.SetActive(true);
+
+        soundMan.audioSource.PlayOneShot(soundMan.click2, 0.5f);
     }
 }

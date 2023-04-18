@@ -12,6 +12,8 @@ public class UpgradeScript : MonoBehaviour
     GameObject gameManager;
     [SerializeField]
     GameObject spriteManager;
+    [SerializeField]
+    SettlementSoundScript soundMan;
 
     #region Buttons
     [SerializeField]
@@ -87,6 +89,7 @@ public class UpgradeScript : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         TheCloud.uiMenuOpen = false;
+        soundMan.audioSource.PlayOneShot(soundMan.click2, 0.5f);
     }
 
     void upgradeMePress()
@@ -129,6 +132,7 @@ public class UpgradeScript : MonoBehaviour
             // update scores
             gms.AlterScores(TheCloud.Plots[id].Type, TheCloud.Plots[id].Option, TheCloud.Plots[id].Level, int.Parse(matCost.text), int.Parse(timeCost.text));
 
+            soundMan.audioSource.PlayOneShot(soundMan.buildMetal, 0.5f);
         }
 
 

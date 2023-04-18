@@ -9,12 +9,15 @@ public class HoverOverScript : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private RectTransform linkedMenu;
 
+    [SerializeField]
+    private ShipSoundManScript sMan;
+
     private void OnMouseOver()
     {
         if ( TheCloud.uiMenuOpen == false )
         {
             componentOne.SetActive(true);
-            TheCloud.credits++;
+            //TheCloud.credits++;
         }
     }
 
@@ -29,6 +32,7 @@ public class HoverOverScript : MonoBehaviour
         {
             linkedMenu.gameObject.SetActive(true);
             TheCloud.uiMenuOpen = true;
+            sMan.audioSource.PlayOneShot(sMan.positiveClick, 0.5f);
         }
     }
 

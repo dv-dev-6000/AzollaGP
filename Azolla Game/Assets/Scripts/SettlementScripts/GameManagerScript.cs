@@ -108,7 +108,15 @@ public class GameManagerScript : MonoBehaviour
 
         if (TheCloud.returnedFromPlatformer)
         {
-            TheCloud.settOneMaterials = TheCloud.matsCollected + TheCloud.levelPrize;
+            if (TheCloud.playTimed)
+            {
+                TheCloud.settOneMaterials = TheCloud.matsCollected + (TheCloud.levelPrize * 2);
+            }
+            else
+            {
+                TheCloud.settOneMaterials = TheCloud.matsCollected + TheCloud.levelPrize;
+            }
+            
             TheCloud.returnedFromPlatformer = false;
         }
 
@@ -123,6 +131,19 @@ public class GameManagerScript : MonoBehaviour
         {
             eventPanel.gameObject.SetActive(true);
             TheCloud.uiMenuOpen = true;
+        }
+
+        // CHEAT - Reveal mat Button
+        if (Input.GetKeyUp(KeyCode.Insert))
+        {
+            if (!matButton.gameObject.activeInHierarchy)
+            {
+                matButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                matButton.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -393,8 +414,8 @@ public class GameManagerScript : MonoBehaviour
         UpdateScoreValues();
 
         //TESTING 
-        TheCloud.triggerEvent = true;
-        eventPanel.GetComponent<EventScript>().updateEvent(Random.Range(0, 5));
+        //TheCloud.triggerEvent = true;
+        //eventPanel.GetComponent<EventScript>().updateEvent(Random.Range(0, 5));
     }
 
     void BackToShip()

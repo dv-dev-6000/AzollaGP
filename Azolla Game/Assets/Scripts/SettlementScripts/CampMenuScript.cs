@@ -16,6 +16,9 @@ public class CampMenuScript : MonoBehaviour
     GameManagerScript gms;
 
     [SerializeField]
+    SettlementSoundScript soundMan;
+
+    [SerializeField]
     private RectTransform embarkPanel;
 
     #region Buttons
@@ -87,6 +90,7 @@ public class CampMenuScript : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         TheCloud.uiMenuOpen = false;
+        soundMan.audioSource.PlayOneShot(soundMan.click2, 0.5f);
     }
 
     private void ConvertSciPress()
@@ -95,7 +99,7 @@ public class CampMenuScript : MonoBehaviour
         {
             TheCloud.scienceScore += (50 * TheCloud.scienceConv) / 10;
             TheCloud.settOneMaterials -= 50;
-
+            soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
         }
     }
@@ -106,7 +110,7 @@ public class CampMenuScript : MonoBehaviour
         {
             TheCloud.moraleScore += (50 * TheCloud.moraleConv) / 10;
             TheCloud.settOneMaterials -= 50;
-
+            soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
         }
     }
@@ -117,7 +121,7 @@ public class CampMenuScript : MonoBehaviour
         {
             TheCloud.environmentScore += (50 * TheCloud.environmentConv) / 10;
             TheCloud.settOneMaterials -= 50;
-
+            soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
         }
     }
@@ -132,7 +136,7 @@ public class CampMenuScript : MonoBehaviour
         this.gameObject.SetActive(false);
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
-
+        soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
         sceneToLoad = 2;
     }
 
@@ -146,7 +150,7 @@ public class CampMenuScript : MonoBehaviour
         this.gameObject.SetActive(false);
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
-
+        soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
         sceneToLoad = 2;
     }
 
@@ -178,5 +182,6 @@ public class CampMenuScript : MonoBehaviour
     {
         embarkPanel.gameObject.SetActive(false);
         TheCloud.uiMenuOpen = false;
+        soundMan.audioSource.PlayOneShot(soundMan.click2, 0.5f);
     }
 }

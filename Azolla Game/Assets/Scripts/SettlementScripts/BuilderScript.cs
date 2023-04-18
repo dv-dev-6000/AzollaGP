@@ -14,6 +14,8 @@ public class BuilderScript : MonoBehaviour
     GameObject gameManager;
     [SerializeField]
     GameObject spriteManager;
+    [SerializeField]
+    SettlementSoundScript soundMan;
 
     #region Button Fields
     [SerializeField]
@@ -311,7 +313,8 @@ public class BuilderScript : MonoBehaviour
     void closeMePress()
     {
         this.gameObject.SetActive(false);
-        TheCloud.uiMenuOpen = false; // update to use global var
+        TheCloud.uiMenuOpen = false; 
+        soundMan.audioSource.PlayOneShot(soundMan.click2, 0.5f);
     }
 
     void buildMePress()
@@ -351,6 +354,7 @@ public class BuilderScript : MonoBehaviour
             }
 
             gms.AlterScores(TheCloud.Plots[id].Type, TheCloud.Plots[id].Option, TheCloud.Plots[id].Level, int.Parse(matCost.text), int.Parse(timeCost.text));
+            soundMan.audioSource.PlayOneShot(soundMan.build, 0.5f);
         }
 
         closeMePress();

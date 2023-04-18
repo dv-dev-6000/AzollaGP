@@ -12,6 +12,8 @@ public class CampPlotScript : MonoBehaviour
     private GameObject hovCir;
     [SerializeField]
     public GameObject upgradeOneSprite;
+    [SerializeField]
+    SettlementSoundScript soundMan;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +50,7 @@ public class CampPlotScript : MonoBehaviour
         if (hovCir.activeInHierarchy == true)
         {
             gameManager.GetComponent<GameManagerScript>().OpenCampMenu();
-
+            soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             hovCir.SetActive(false);
         }
     }

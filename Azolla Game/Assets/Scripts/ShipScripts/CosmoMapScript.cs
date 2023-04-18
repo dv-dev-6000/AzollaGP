@@ -13,6 +13,9 @@ public class CosmoMapScript : MonoBehaviour
     [SerializeField]
     private Button goButt;
 
+    [SerializeField]
+    private ShipSoundManScript sMan;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +38,12 @@ public class CosmoMapScript : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         TheCloud.uiMenuOpen = false;
+        sMan.audioSource.PlayOneShot(sMan.click2, 0.5f);
     }
 
     void gButtPress()
     {
+        sMan.audioSource.PlayOneShot(sMan.click1, 0.5f);
         TheCloud.uiMenuOpen = false;
         SceneManager.LoadScene(1);
     }
