@@ -421,6 +421,6 @@ public class GameManagerScript : MonoBehaviour
     void BackToShip()
     {
         // load ship scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

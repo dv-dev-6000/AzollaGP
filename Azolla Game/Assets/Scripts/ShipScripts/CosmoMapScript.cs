@@ -45,7 +45,7 @@ public class CosmoMapScript : MonoBehaviour
     {
         sMan.audioSource.PlayOneShot(sMan.click1, 0.5f);
         TheCloud.uiMenuOpen = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 }

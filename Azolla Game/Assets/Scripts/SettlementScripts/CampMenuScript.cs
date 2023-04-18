@@ -137,7 +137,7 @@ public class CampMenuScript : MonoBehaviour
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
         soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
-        sceneToLoad = 2;
+        sceneToLoad = 3;
     }
 
     private void EmbarkTwoPress()
@@ -151,7 +151,7 @@ public class CampMenuScript : MonoBehaviour
         // open embark menu
         embarkPanel.gameObject.SetActive(true);
         soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
-        sceneToLoad = 2;
+        sceneToLoad = 3;
     }
 
     private void timerButPress()
