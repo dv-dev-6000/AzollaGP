@@ -110,13 +110,13 @@ public class GameManagerScript : MonoBehaviour
         {
             if (TheCloud.playTimed)
             {
-                TheCloud.settOneMaterials = TheCloud.matsCollected + (TheCloud.levelPrize * 2);
+                TheCloud.settOneMaterials += TheCloud.matsCollected + (TheCloud.levelPrize * 2);
             }
             else
             {
-                TheCloud.settOneMaterials = TheCloud.matsCollected + TheCloud.levelPrize;
+                TheCloud.settOneMaterials += TheCloud.matsCollected + TheCloud.levelPrize;
             }
-            
+            TheCloud.credits += 5;
             TheCloud.returnedFromPlatformer = false;
         }
 
@@ -349,7 +349,11 @@ public class GameManagerScript : MonoBehaviour
                     }
                 }
                 break;
+
         }
+
+        // increase credits
+        TheCloud.credits += 50;
 
         // reduce materials
         TheCloud.settOneMaterials -= matcost;

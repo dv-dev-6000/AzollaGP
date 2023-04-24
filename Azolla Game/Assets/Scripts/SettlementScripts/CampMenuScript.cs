@@ -101,6 +101,7 @@ public class CampMenuScript : MonoBehaviour
             TheCloud.settOneMaterials -= 50;
             soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
+            TheCloud.credits += 20;
         }
     }
 
@@ -112,6 +113,7 @@ public class CampMenuScript : MonoBehaviour
             TheCloud.settOneMaterials -= 50;
             soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
+            TheCloud.credits += 20;
         }
     }
 
@@ -123,6 +125,7 @@ public class CampMenuScript : MonoBehaviour
             TheCloud.settOneMaterials -= 50;
             soundMan.audioSource.PlayOneShot(soundMan.click1, 0.5f);
             gms.UpdateScoreValues();
+            TheCloud.credits += 20;
         }
     }
 
