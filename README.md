@@ -24,6 +24,8 @@ Based on this, the team drafted a concept for a resource management game which m
 * As the settlement grows the player earns credits which can be spent in the NFT store
 * The NFT store allows players to unlock perks which can be used across the Azolla ecosystem
 
+<img src='https://github.com/dv-dev-6000/AzollaGP/blob/master/sample.gif' width='600'> <br>
+
 The prototype is intended to showcase the games main features and illustrate how the play to earn features could be implemented. As such, the prototype doesn’t support any active play to earn or NFT features, nor does it integrate connecting with other Azolla users, these are showcased using dummy menus for illustrative purposes only. 
 
 the prototype features:
