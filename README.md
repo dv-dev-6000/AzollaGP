@@ -40,5 +40,6 @@ The team was comprised of five students from across various university programs:
 * 2 students from Sound Design
 * 1 student from Computing
 * 1 student from Game Development
-* 1 student from Software Engineering 
+* 1 student from Software Engineering
+
 As a software engineering student with a background in game development my main roles in the project were, game design (during the planning phase) and gameplay programming (during the development phase).
