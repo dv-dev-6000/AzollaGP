@@ -1,7 +1,7 @@
 # Azolla Group Project - A play to earn game prototype
 
 ## About the group project module
-The aim of the universities group project module is for students to gain hands on experience working on projects submitted my real clients. Students from across various subject groups are encouraged to form multidisciplinary groups and bid for projects. Student groups will then work in agile teams to design, develop and ultimately deliver a completed product according to the clients specifications. 
+The aim of the universities group project module is for students to gain hands on experience working on projects submitted my real clients. Students from across various subject groups are encouraged to form multidisciplinary groups and bid for projects. Student groups then work in agile teams to design, develop and ultimately deliver a completed product according to the clients specifications. 
 
 ## About the company
 Azolla’s aim is to bring sustainable travel to the mainstream, making sustainable efforts more accessible to travellers and service providers to have a positive environmental and cultural impact. Azolla’s ecosystem currently comprises of a sustainable travel booking app and the company aim to expand to introduce an online game and VR experience.
